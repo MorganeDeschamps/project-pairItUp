@@ -54,6 +54,14 @@ body {
     border-radius: 50px;
 }
 
+#player-card li {
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: white;
+}
+
 #future-card {
     list-style: none;
     display: flex;
