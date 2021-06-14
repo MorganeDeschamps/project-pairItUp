@@ -28,15 +28,14 @@ class PairItUp {
     }
 
     //symbol click event:
-    checkIfSame(symbol1, symbol2) {
-        this.symbolClicked++;
-        if (symbol1.includes(symbol2)) {
-          this.cardsLeft--;
-          this.symbolClicked = 0;
-          this.checkIfWon();
+    checkIfSame(sym1, sym2) {
+        if (sym1.includes(sym2)) {
+            this.cardsLeft = 0;
+            console.log("you win")
+          //this.checkIfWon();
           return true;
         } else {
-          this.wrongGuess();
+          //this.wrongGuess();
           return false;
         } 
     }
@@ -78,6 +77,7 @@ class PairItUp {
         } else {
             this.gameOver();
         }
+        console.log(`clicked ${this.symbolClicked}`)
     }
 
     malusTime() {
@@ -88,7 +88,7 @@ class PairItUp {
     //if 2 wrong guesses on same card:
     gameOver() {
         clearInterval(this.intervalId);
-        this.symbolClicked = 0;
+        //this.symbolClicked = 0;
         this.cardsLeft = null;
         //add some gameover stuff
     }
