@@ -4,42 +4,75 @@ const pairItUp = new PairItUp();
 
 window.addEventListener('load', (event) => {
   console.log('game is loaded');
-  this.buildMainCard();
-  this.imgMainCard();
-  //this.buildPlayerCard();
-  //this.buildNextCard();
+  this.firstCardArray();
+  this.buildFirstCard();
   //console.log(this.buildNextCard, this.buildMainCard, this.buildPlayerCard)
  // document.getElementById("timer").innerHTML += `<img class="main symbol" src=`${symbols[0].img}` alt= "test"></img>`
 
 })
 
 
+let button = document.getElementById("start")
 
-let mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-let playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6"];
-let nextCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6"];
+button.addEventListener("click", (event) => {
+    pairItUp.start();
+})
+
+
+
+
+let mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
+let playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+let nextCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
 
 let mainCardHtml = document.getElementById("main-card");
 let playerCardHtml = document.getElementById("player-card");
 let nextCardHtml = document.getElementById("future-card");
 
-function buildMainCard () {
+
+//FIRST CARD
+function firstCardArray () {
     mainCard.forEach ((symbol) => {
-        mainCard.splice(mainCard.indexOf(symbol), 1, symbols[Math.floor(Math.random() * symbols.length)])
+        let index = mainCard.indexOf(symbol)
+        mainCard.splice(index, 1, symbols[Math.floor(Math.random() * symbols.length)])
     })
     console.log(mainCard)
+    return mainCard;
 }
 
-function imgMainCard () {
+function buildFirstCard () {
+    let inner= ``;
     mainCard.forEach((symbol) => {
-        let li = document.createElement("li");
-        let image = document.createElement("img")
-        image.setAttribute()
-    mainCardHtml.innerHTML += `<li class="main symbol" style="background: url(img/${symbol.img}) no-repeat"></li>`
+        let index = mainCard.indexOf(symbol)
+        inner += 
+        `<li class="symbol ${symbol.name}">
+        <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
+        </li>`;
     })
+    mainCardHtml.innerHTML = inner;
+    console.log(inner);
 }
 
-function buildPlayerCard () {
+
+
+//PLAYER CARD
+
+function playerCardArray () {
+    
+    playerCard.forEach ((symbol) => {
+        let index = mainCard.indexOf(symbol)
+        mainCard.splice(index, 1, symbols[Math.floor(Math.random() * symbols.length)])
+    })
+    console.log(mainCard)
+    return mainCard;
+}
+
+
+
+
+/*
+
+function playerCardArray () {
     playerCard.forEach ((symbol) => {
         playerCard.splice(playerCard.indexOf(symbol), 1, symbols[Math.floor(Math.random() * symbols.length)])
         playerCardHtml.innerHTML += `<li class="player symbol" data-symbol-name="${symbol.name}" style="background: url(img/${symbol.img}) no-repeat"></li>`
@@ -58,14 +91,8 @@ function buildNextCard () {
     nextCard.splice(6, 0, playerCard[1])
     nextCardHtml.innerHTML += `<li class="next symbol" data-symbol-name="${nextCard[7].name}" style="background: url(img/${nextCard[7].img}) no-repeat"></li>`
 }
+*/
 
-
-
-let button = document.getElementById("start")
-
-button.addEventListener("click", (event) => {
-    pairItUp.start();
-})
 
 
 const symbols = [
@@ -129,7 +156,7 @@ const symbols = [
     {name: "water" , img: "water.png"},
     {name: "bread" , img: "bread.png"},
     {name: "cake" , img: "cake.png"},
-    {name: "baguette" , img: "baguette.png"},
+    {name: "bread" , img: "bread.png"},
     {name: "jellyfish" , img: "jellyfish.png"},
     {name: "crab" , img: "crab.png"},
     {name: "turtle" , img: "turtle.png"},

@@ -15,21 +15,54 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 600px;
 }
 
 #main-card {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     height: 300px;
-    width: 300px;
+    width: 400px;
+    padding: 20px;
+    box-shadow: inset 0px 0px 20px -6px #615961;
+    border-radius: 50px;
+    list-style-image: initial;
+}
+
+#main-card li{
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: white;
+}
+
+#player-card {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 400px;
     padding: 20px;
     box-shadow: inset 0px 0px 20px -6px #615961;
     border-radius: 50px;
 }
 
-#player-card {
+#future-card {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     height: 300px;
-    width: 300px;
+    width: 400px;
     padding: 20px;
     box-shadow: inset 0px 0px 20px -6px #615961;
     border-radius: 50px;
