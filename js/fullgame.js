@@ -18,8 +18,12 @@ let button = document.getElementById("start")
 
 button.addEventListener("click", (event) => {
     playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+    futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+
     this.playerCardArray();
     this.buildPlayerCard();
+    this.futureCardArray();
+    this.buildFutureCard();
 })
 
 
@@ -27,13 +31,13 @@ button.addEventListener("click", (event) => {
 
 let mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
 let playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-let nextCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+let futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
 
 
 
 let mainCardHtml = document.getElementById("main-card");
 let playerCardHtml = document.getElementById("player-card");
-let nextCardHtml = document.getElementById("future-card");
+let futureCardHtml = document.getElementById("future-card");
 
 
 //FIRST CARD
@@ -104,47 +108,49 @@ function buildPlayerCard () {
         </li>`;
     })
     playerCardHtml.innerHTML = inner;
-    console.log(inner);
+    //console.log(inner);
 }
 
 
-/*
 
-function playerCardArray () {
 
-    playerCard.forEach ((symbol) => {
-        let index = mainCard.indexOf(symbol)
-        mainCard.splice(index, 1, symbols[Math.floor(Math.random() * symbols.length)])
+//FUTURE CARD
+
+function futureCardArray() {
+    let filteredArray = symbols.filter(symbol => !playerCard.includes(symbol));
+      
+    
+    futureCard.forEach ((symbol) => {
+        let index = futureCard.indexOf(symbol)
+        let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
+
+        futureCard.splice(index, 1, random)
+
+        filteredArray = filteredArray.filter(el => !futureCard.includes(el) && !playerCard.includes(el))
     })
-    console.log(mainCard)
-    return mainCard;
+    
+    let randomCommon = playerCard[Math.floor(Math.random() * playerCard.length)];
+    let randomIndex = Math.floor(Math.random() * futureCard.length);
+
+    futureCard.splice(randomIndex, 0, randomCommon);
+
+    console.log(filteredArray.length);
+    return futureCard;
 }
 
-
-
-
-/*
-
-function playerCardArray () {
-    playerCard.forEach ((symbol) => {
-        playerCard.splice(playerCard.indexOf(symbol), 1, symbols[Math.floor(Math.random() * symbols.length)])
-        playerCardHtml.innerHTML += `<li class="player symbol" data-symbol-name="${symbol.name}" style="background: url(img/${symbol.img}) no-repeat"></li>`
+function buildFutureCard () {
+    let inner= ``;
+    futureCard.forEach((symbol) => {
+        let index = futureCard.indexOf(symbol)
+        inner += 
+        `<li class="future symbol ${symbol.name}">
+        <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
+        </li>`;
     })
-
-    playerCard.splice(6, 0, mainCard[0])
-    playerCardHtml.innerHTML += `<li class="player symbol" data-symbol-name="${playerCard[7].name}" style="background: url(img/${playerCard[7].img}) no-repeat"></li>`
+    futureCardHtml.innerHTML = inner;
+    //console.log(inner);
 }
 
-function buildNextCard () {
-    nextCard.forEach ((symbol) => {
-        nextCard.splice(nextCard.indexOf(symbol), 1, symbols[Math.floor(Math.random() * symbols.length)])
-        nextCardHtml.innerHTML += `<li class="next symbol" data-symbol-name="${symbol.name}" style="background: url(img/${symbol.img}) no-repeat"></li>`
-    })
-
-    nextCard.splice(6, 0, playerCard[1])
-    nextCardHtml.innerHTML += `<li class="next symbol" data-symbol-name="${nextCard[7].name}" style="background: url(img/${nextCard[7].img}) no-repeat"></li>`
-}
-*/
 
 
 
