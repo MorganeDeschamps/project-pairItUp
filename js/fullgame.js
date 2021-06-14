@@ -8,9 +8,6 @@ window.addEventListener('load', (event) => {
   this.firstCardArray();
   this.buildFirstCard();
   //this.playerCardArray();
-  //console.log(this.buildNextCard, this.buildMainCard, this.buildPlayerCard)
- // document.getElementById("timer").innerHTML += `<img class="main symbol" src=`${symbols[0].img}` alt= "test"></img>`
-
 })
 
 
@@ -104,7 +101,9 @@ function buildPlayerCard () {
         let index = playerCard.indexOf(symbol)
         inner += 
         `<li class="player symbol ${symbol.name}">
+        <button>
         <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
+        </button>
         </li>`;
     })
     playerCardHtml.innerHTML = inner;
@@ -144,7 +143,9 @@ function buildFutureCard () {
         let index = futureCard.indexOf(symbol)
         inner += 
         `<li class="future symbol ${symbol.name}">
+        <button>
         <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
+        </button>
         </li>`;
     })
     futureCardHtml.innerHTML = inner;
