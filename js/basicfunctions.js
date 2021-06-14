@@ -30,7 +30,7 @@ class PairItUp {
     //symbol click event:
     checkIfSame(symbol1, symbol2) {
         this.symbolClicked++;
-        if (symbol1 === symbol2) {
+        if (symbol1.includes(symbol2)) {
           this.cardsLeft--;
           this.symbolClicked = 0;
           this.checkIfWon();

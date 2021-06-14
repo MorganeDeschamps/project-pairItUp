@@ -18,6 +18,9 @@ let startButton = document.getElementById("start");
 startButton.addEventListener("click", (event) => {
     playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
     futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+    playerCardInner = ``;
+    futureCardInner = ``;
+
 
     this.playerCardArray();
     this.buildPlayerCard();
@@ -30,9 +33,14 @@ startButton.addEventListener("click", (event) => {
 
 
 function clicked(event) {
-    let sym1 = event.target
-    console.log(sym1)
-    //pairItUp.checkIfSame()
+    let sym1 = mainCard.map(element => element.name);
+    //console.log(sym1);
+
+    let sym2 = event.target.alt;
+    //console.log(sym2);
+
+    pairItUp.checkIfSame(sym1, sym2)
+    console.log(pairItUp.checkIfSame(sym1, sym2))
 }
 
 
