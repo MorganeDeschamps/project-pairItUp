@@ -44,18 +44,13 @@ class PairItUp {
     //if correct symbol:
     //is the else necessary? Not sure
     checkIfWon() {
-        if(this.cardsLeft === 0) {
-            this.youWin();
-            return true;
-        } else {
-            return false;}
+        if(this.cardsLeft === 0) {this.youWin();}
     }
 
     
     youWin() {
         clearInterval(this.intervalId);
         this.bestTimeUpdate();
-        this.symbolClicked = 0;
         this.cardsLeft = null;
         //add some you win stuff
     }

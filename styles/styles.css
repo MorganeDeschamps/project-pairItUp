@@ -1,4 +1,6 @@
 body {
+    padding: none;
+    margin: none;
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -71,6 +73,12 @@ body {
     margin-right: 10px;
     background-color: white;
 }
+
+
+.hide {
+    display: none;
+}
+
 
 #future-card {
     list-style: none;

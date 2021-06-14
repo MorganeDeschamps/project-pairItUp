@@ -4,16 +4,18 @@ const pairItUp = new PairItUp();
 
 window.addEventListener('load', (event) => {
   console.log('game is loaded');
-  console.log(symbols.length);
+  //console.log(symbols.length);
   this.firstCardArray();
   this.buildFirstCard();
   //this.playerCardArray();
 })
 
 
-let button = document.getElementById("start")
+let startButton = document.getElementById("start");
 
-button.addEventListener("click", (event) => {
+
+
+startButton.addEventListener("click", (event) => {
     playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
     futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
 
@@ -21,8 +23,17 @@ button.addEventListener("click", (event) => {
     this.buildPlayerCard();
     this.futureCardArray();
     this.buildFutureCard();
+
+    let symbolButtons = document.querySelectorAll("#play-button");
+    symbolButtons.forEach((button) => {button.addEventListener("click", clicked, false)});
 })
 
+
+function clicked(event) {
+    let sym1 = event.target
+    console.log(sym1)
+    //pairItUp.checkIfSame()
+}
 
 
 
@@ -32,17 +43,23 @@ let futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"
 
 
 
-let mainCardHtml = document.getElementById("main-card");
-let playerCardHtml = document.getElementById("player-card");
-let futureCardHtml = document.getElementById("future-card");
+let mainCardElement = document.getElementById("main-card");
+let playerCardElement = document.getElementById("player-card");
+let futureCardElement = document.getElementById("future-card");
+
+
+let mainCardInner = ``;
+let playerCardInner = ``;
+let futureCardInner = ``;
+
+
 
 
 //FIRST CARD
 function firstCardArray () {
     let filterAsYouGo = symbols.filter(el => el);
 
-    mainCard.forEach ((symbol) => {
-        let index = mainCard.indexOf(symbol)
+    mainCard.forEach ((symbol, index) => {
         mainCard.splice(index, 1, filterAsYouGo[Math.floor(Math.random() * filterAsYouGo.length)])
 
         filterAsYouGo = symbols.filter(function(el){
@@ -54,22 +71,21 @@ function firstCardArray () {
 }
 
 function buildFirstCard () {
-    let inner= ``;
-    mainCard.forEach((symbol) => {
-        let index = mainCard.indexOf(symbol)
-        inner += 
+    mainCard.forEach((symbol, index) => {
+        mainCardInner += 
         `<li class="symbol ${symbol.name}">
         <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
         </li>`;
     })
-    mainCardHtml.innerHTML = inner;
-    console.log(inner);
+    mainCardElement.innerHTML = mainCardInner;
+    console.log(mainCardInner);
 }
 
 
-
-
-
+/*if (same) {
+    mainCardInner = playerCardInner
+}
+*/
 
 //PLAYER CARD
 
@@ -77,8 +93,7 @@ function playerCardArray() {
     let filteredArray = symbols.filter(symbol => !mainCard.includes(symbol));
       
     
-    playerCard.forEach ((symbol) => {
-        let index = playerCard.indexOf(symbol)
+    playerCard.forEach ((symbol, index) => {
         let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
 
         playerCard.splice(index, 1, random)
@@ -87,7 +102,7 @@ function playerCardArray() {
     })
     
     let randomCommon = mainCard[Math.floor(Math.random() * mainCard.length)];
-    let randomIndex = Math.floor(Math.random() * mainCard.length);
+    let randomIndex = Math.floor(Math.random() * playerCard.length);
 
     playerCard.splice(randomIndex, 0, randomCommon);
 
@@ -96,20 +111,18 @@ function playerCardArray() {
 }
 
 function buildPlayerCard () {
-    let inner= ``;
     playerCard.forEach((symbol) => {
         let index = playerCard.indexOf(symbol)
-        inner += 
+        playerCardInner += 
         `<li class="player symbol ${symbol.name}">
-        <button>
+        <button id="play-button">
         <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
         </button>
         </li>`;
     })
-    playerCardHtml.innerHTML = inner;
+    playerCardElement.innerHTML = playerCardInner;
     //console.log(inner);
 }
-
 
 
 
@@ -119,8 +132,7 @@ function futureCardArray() {
     let filteredArray = symbols.filter(symbol => !playerCard.includes(symbol));
       
     
-    futureCard.forEach ((symbol) => {
-        let index = futureCard.indexOf(symbol)
+    futureCard.forEach ((symbol, index) => {
         let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
 
         futureCard.splice(index, 1, random)
@@ -138,19 +150,23 @@ function futureCardArray() {
 }
 
 function buildFutureCard () {
-    let inner= ``;
     futureCard.forEach((symbol) => {
         let index = futureCard.indexOf(symbol)
-        inner += 
+        futureCardInner += 
         `<li class="future symbol ${symbol.name}">
-        <button>
+        <button id="play-button">
         <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
         </button>
         </li>`;
     })
-    futureCardHtml.innerHTML = inner;
+    futureCardElement.innerHTML = futureCardInner;
     //console.log(inner);
 }
+
+
+
+
+//SWITCHING CARDS 
 
 
 
