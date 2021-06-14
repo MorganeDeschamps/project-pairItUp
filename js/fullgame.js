@@ -4,7 +4,7 @@ const pairItUp = new PairItUp();
 
 window.addEventListener('load', (event) => {
   console.log('game is loaded');
-  //console.log(symbols);
+  console.log(symbols.length);
   this.firstCardArray();
   this.buildFirstCard();
   //this.playerCardArray();
@@ -73,24 +73,24 @@ function buildFirstCard () {
 //PLAYER CARD
 
 function playerCardArray() {
-    let filteredArray = symbols.filter(function(symbol){
-        return !mainCard.includes(symbol);
-      })
+    let filteredArray = symbols.filter(symbol => !mainCard.includes(symbol));
+      
     
     playerCard.forEach ((symbol) => {
         let index = playerCard.indexOf(symbol)
-        playerCard.splice(index, 1, filteredArray[Math.floor(Math.random() * filteredArray.length)])
+        let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
 
-        filteredArray = filteredArray.filter(function(el){
-            return !playerCard.includes(el);
-          })
+        playerCard.splice(index, 1, random)
+
+        filteredArray = filteredArray.filter(el => !mainCard.includes(el) && !playerCard.includes(el))
     })
     
     let randomCommon = mainCard[Math.floor(Math.random() * mainCard.length)];
     let randomIndex = Math.floor(Math.random() * mainCard.length);
+
     playerCard.splice(randomIndex, 0, randomCommon);
 
-    console.log(playerCard);
+    console.log(filteredArray.length);
     return playerCard;
 }
 
