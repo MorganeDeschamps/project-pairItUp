@@ -11,9 +11,8 @@ window.addEventListener('load', (event) => {
 })
 
 
+//START GAME 
 let startButton = document.getElementById("start");
-
-
 
 startButton.addEventListener("click", (event) => {
     pairItUp.start()
@@ -35,25 +34,18 @@ startButton.addEventListener("click", (event) => {
 
 
 function clicked(event) {
-    let sym1 = mainCard.map(element => element.name);
-    console.log(sym1);
-    let sym2 = event.target.alt;
-    console.log(sym2);
-
     pairItUp.symbolClicked += 1;
-    console.log(pairItUp.symbolClicked);
+    //console.log(pairItUp.symbolClicked);
+
+
+    let sym1 = mainCard.map(element => element.name);
+    //console.log(sym1);
+    let sym2 = event.target.alt;
+    //console.log(sym2)
 
     pairItUp.checkIfSame(sym1, sym2)
-
-    if(pairItUp.checkIfSame(sym1, sym2)) {pairItUp.checkIfWon()}
-    else {pairItUp.wrongGuess()}
-
-    console.log(pairItUp.symbolClicked);
-    /*
-    pairItUp.checkIfSame(sym1, sym2)
-    console.log(pairItUp.checkIfSame(sym1, sym2))
-    */
-
+    //if same -> checkIfWon() -> if yes youWin() -> bestTimeUpdate()
+    //if not -> wrongGuess() -> if 1st attempt malusTime() -> if not gameOver()
 }
 
 
