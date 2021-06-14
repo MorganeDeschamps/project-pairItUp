@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css" />
+    <title>Document</title>
 
+</head>
+<body>
+    <div id="controls">
+        <h1>Pair it up!</h1>
+        <h1>Timer</h1>
+        <div>
+            <span id="minDec" class="number">0</span>
+            <span id="minUni" class="number">0</span>
+            <span>:</span>
+            <span id="secDec" class="number">0</span>
+            <span id="secUni" class="number">0</span>
+        </div>
+        <div>
+            <div id="best-time">
+                <h1>Best time</h1>
+                <span id="time"></span>
+            </div>
+        </div>
+        <button id="start">START</button>
+    </div>
+    <div id="cards">
+        <div>
+            <ul id="main-card"  class="card main">
+            </ul>
+        </div>
+        <div>
+            <ul id="player-card"    class="card current">
+            </ul>
+        </div>
+        <div>
+            <ul id="future-card" class="card future">
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/basicfunctions.js"></script>
+    <script src="js/fullgame.js"></script>  
+</body>
+</html>
