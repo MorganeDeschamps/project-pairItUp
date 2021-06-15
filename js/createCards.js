@@ -88,13 +88,16 @@ function clicked(event) {
 
 //FIRST CARD
 function firstCardArray () {
-    let filterAsYouGo = symbols.filter(el => el);
+    let availableSymbols = symbols.slice();
+    //availableSymbols is a copy of symbols
 
     mainCard.forEach ((symbol, index) => {
-        mainCard.splice(index, 1, filterAsYouGo[Math.floor(Math.random() * filterAsYouGo.length)])
+        mainCard.splice(index, 1, availableSymbols[Math.floor(Math.random() * availableSymbols.length)])
 
-        filterAsYouGo = symbols.filter(function(el){
-            return !mainCard.includes(el);
+        //loop one: replace el[0] of mainCard by random el from availableSymbols(=symbols)
+        //loop two: replace el[1] of mainCard by random el from availableSymbols(=symbols - first el selecte)
+        availableSymbols = symbols.filter(function(symb){
+            return !mainCard.includes(symb);
           })
     })
     console.log(mainCard)
