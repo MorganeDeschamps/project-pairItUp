@@ -138,11 +138,12 @@ class Cards {
     }
 
 
-    reset () {
+    resetCards () {
         this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
         this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
 
     }
+
 
 }
 

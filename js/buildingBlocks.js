@@ -1,7 +1,7 @@
 class PairItUp {
     constructor() {
         this.symbolClicked = 0;
-        this.cardsLeft = null;
+        this.cardsLeft = 25;
 
         this.intervalId = null;
         this.currentTime = 0;
@@ -18,14 +18,21 @@ class PairItUp {
 
     start() {
         this.currentTime = 0;
-        this.cardsLeft = 25;
+        this.cardsLeftElement.innerText = this.cardsLeft;
         this.intervalId = setInterval(() => {
           this.currentTime += 1;
-          this.printTime();
+          this.printTime(this.getTime());
         }, 1000) 
     }
 
+    stop() {
+        this.symbolClicked = 0;
+        this.cardsLeft = 25;
+        this.intervalId = null;
+        this.currentTime = 0;
+    }
 
+    //TIME STUFF
     getTime() {
         let min = Math.floor(this.currentTime / 60);
         let sec = this.currentTime % 60;
@@ -33,8 +40,10 @@ class PairItUp {
         let minutes = this.computeTwoDigitNumber(min);
         let seconds = this.computeTwoDigitNumber(sec);
 
-        return (minutes + seconds); 
+        let string = (minutes + seconds);
+        let time = string.split("");
 
+        return time; 
     }
 
     computeTwoDigitNumber(value) {
@@ -48,97 +57,68 @@ class PairItUp {
         return twoDigits
     }
 
-    printTime() {
-        let string = this.computeTwoDigitNumber(this.getTime());
-        let time = string.split("");
-      
+    printTime(time) {
         this.minDecElement.innerText = time[0];
         this.minUniElement.innerText = time[1];
         this.secDecElement.innerText = time[2];
         this.secUniElement.innerText = time[3];
-        // ... your code goes here
     }
 
-    //symbol click event:
-    checkIfSame(symbol1, symbol2) {
-        //this.symbolClicked += 1;
-        if (symbol1.includes(symbol2)) {
-          this.cardsLeft--;
-          this.symbolClicked = 0;
-          this.checkIfWon();
-          return true;
-        } else {
-          this.wrongGuess();
-          return false;
-        } 
-    }
-
-    //if correct symbol:
-    //is the else necessary? Not sure
-    checkIfWon() {
-        if(this.cardsLeft === 0) {this.youWin();}
-    }
-
-    
-    youWin() {
-        clearInterval(this.intervalId);
-        this.bestTimeUpdate();
-        this.cardsLeft = null;
-        //add some you win stuff
-    }
 
     bestTimeUpdate() {
         if (this.currentTime < this.bestTimeSeconds) {
-            let splitTime;
-            let timeNow = this.getTime();
+            this.bestTimeElement.innerText = this.currentTime;
+        }
+        this.currentTime = 0;
+    }
 
-            splitTime = timeNow[0] + timeNow[1] + ":" + timeNow[2] + timeNow[3];
-            this.bestTime = splitTime;
-            this.currentTime = 0;
-            return true;
+
+
+    //LOGIC TIME
+    checkIfSame(sym1, sym2) {
+        if(sym1.includes(sym2)) {
+            return true
         } else {
-            this.currentTime = 0;
-            return false;
+            return false
         }
     }
 
+
+    finalCheck (result) {
+        if (result) {
+          pairItUp.cardsLeft--;
+          pairItUp.symbolClicked = 0;
+          return this.didYouWin();
+        } else {
+          return this.wrongGuess();
+        }
+    }
+
+    didYouWin() {
+        if(this.cardsLeft === 0) {return "win"}
+        else {return "correct"}
+    }
 
 
     //if wrong symbol:
     wrongGuess() {
         if (this.symbolClicked < 2) {
-            this.malusTime();
-            console.log("Wrong guess! One more chance...")
+            this.currentTime += 5;
+            return "wrong";
         } else {
-            this.gameOver();
+            return "lose"
         }
     }
 
-    malusTime() {
-        this.currentTime += 5;
-    }
-
-
-    //if 2 wrong guesses on same card:
-    gameOver() {
-        clearInterval(this.intervalId);
-        //this.symbolClicked = 0;
-        this.cardsLeft = null;
-        //add some gameover stuff
-        console.log("byyyyye");
-    }
-
-
-/*
-
+    /* 
     bonusTime() {
         this.currentTime -= 10;
     }
 
     surprises() {
 
-    }
+    } */
 
-*/
+
 
 }

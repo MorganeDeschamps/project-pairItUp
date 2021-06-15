@@ -2,23 +2,37 @@ class Game {
 
   constructor() {
     this.cards = new Cards;
+    this.pairItUp = new PairItUp();
+
+    this.mainCardElement = document.getElementById("main-card");
+    this.playerCardElement = document.getElementById("player-card");
+    this.futureCardElement = document.getElementById("future-card");
   }
 
   buildMainCard() {
-    let mainCardElement = document.getElementById("main-card");
-    this.cards.buildCard(mainCardElement, this.cards.cardRandom(this.cards.mainCard)); 
-    //this.cards.attachCard(mainCardElement, inner);
+    this.cards.buildCard(this.mainCardElement, this.cards.cardRandom(this.cards.mainCard)); 
   }
 
   buildPlayerCard() {
-    let playerCardElement = document.getElementById("player-card");
-    this.cards.buildCard(playerCardElement, this.cards.cardRandom(this.cards.playerCard, this.cards.mainCard)); 
+    this.cards.buildCard(this.playerCardElement, this.cards.cardRandom(this.cards.playerCard, this.cards.mainCard)); 
   }
 
   buildFutureCard() {
-    let futureCardElement = document.getElementById("future-card");
-    this.cards.buildCard(futureCardElement, this.cards.cardRandom(this.cards.futureCard, this.cards.playerCard)); 
+    this.cards.buildCard(this.futureCardElement, this.cards.cardRandom(this.cards.futureCard, this.cards.playerCard)); 
   }
+
+  moveUp () {
+    this.mainCardElement.innerHTML = this.playerCardElement.innerHTML;
+    this.playerCardElement.innerHTML = this.futureCardElement.innerHTML
+    if (this.pairItUp.cardsLeft > 2) {this.buildFutureCard};
+  }
+
+  endGame() {
+    this.buildMainCard();
+    this.cards.resetCards();
+    this.pairItUp.stop();
+  }
+  
 }
 
 
@@ -33,17 +47,48 @@ window.addEventListener('load', (event) => {
 
 startButton.addEventListener("click", (event) => {
   pairItUp.start();
-  game.cards.reset();
+  game.cards.resetCards();
   game.buildPlayerCard();
   game.buildFutureCard();
 
   let symbolButtons = document.querySelectorAll(".play-button");
-  this.addingEvent(symbolButtons);
-
+  symbolButtons.forEach((button) => button.addEventListener("click", this.clicked, false));
 })
 
-function addingEvent(array) {
-  array.forEach((button) => button.addEventListener("click", this.clicked, false));
+
+
+
+function clicked(event) {
+  pairItUp.symbolClicked += 1;
+
+  let sym1 = game.cards.mainCard.map(element => element.name);
+
+  let sym2 = event.target.alt;
+
+  let result = pairItUp.checkIfSame(sym1, sym2)
+  console.log(result);
+
+  let finalResult = pairItUp.finalCheck(result);
+  console.log(finalResult);
+
+  nextRound(finalResult);
+}
+
+
+function nextRound(result) {
+  if(result === "correct") {
+    pairItUp.symbolClicked = 0;
+    game.moveUp()}
+  else if (result === "wrong") {
+    console.log("Wrong guess! One more chance...")}
+  else if (result === "win") {
+    pairItUp.bestTimeUpdate();
+    game.endGame();
+    console.log("YOU WIN")}
+  else if (result === "lose") {
+    game.endGame();
+    console.log("LOSER")}
+  else {console.log("what?")}
 }
 
 /*
