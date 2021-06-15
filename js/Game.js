@@ -31,7 +31,8 @@ class Game {
   }
 
   buildFutureCard() {
-    this.cards.cardPlayerFuture(this.cards.futureCard, this.cards.PlayerCard);
+    console.log("test future", this.cards.playerCard)
+    this.cards.cardPlayerFuture(this.cards.futureCard, this.cards.playerCard);
     
     let inner = this.cards.buildCard(this.cards.futureCard); 
 
