@@ -28,10 +28,14 @@ startButton.addEventListener("click", (event) => {
     this.futureCardArray();
     this.buildFutureCard();
 
-    let symbolButtons = document.getElementsByClassName("play-button");
-    symbolButtons.forEach((button) => {button.addEventListener("click", clicked, false)});
+    let symbolButtons = document.querySelectorAll(".play-button");
+    this.addingEvent(symbolButtons);
+
 })
 
+function addingEvent(array) {
+    array.forEach((button) => button.addEventListener("click", this.clicked, false));
+}
 
 function clicked(event) {
     pairItUp.symbolClicked += 1;
