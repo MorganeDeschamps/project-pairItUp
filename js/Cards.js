@@ -85,58 +85,47 @@ class Cards {
         this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
         
     }
+
+    filter(origin, current, previous) {
+        let filteredArray;
+        if(!previous) {
+            filteredArray = origin.filter(symbol => !current.includes(symbol));
+        } else {
+            filteredArray = origin.filter(el => !current.includes(el) && !previous.includes(el))
+        }
+        return filteredArray;
+    }
+
+    cardRandom (cardToBuild, cardAbove) {
+        if (!cardAbove) {
+            cardToBuild.forEach ((symbol, index) => {
+                let selectFrom = this.filter(this.array, cardToBuild);
+                let random = selectFrom[Math.floor(Math.random() * selectFrom.length)];
     
-
-    filterOnce(compareTo) {
-        let filteredArray = this.array.filter(symbol => !compareTo.includes(symbol));
-        return filteredArray;
-    }
-
-    filterTwice(origin, current, previous) {
-        let filteredArray = origin.filter(el => !current.includes(el) && !previous.includes(el))
-        return filteredArray;
-    }
-/* 
-    filterTwice(array, otherArray) {
-            let firstFilter = this.array.filter(symbol => !otherArray.includes(symbol));
-            filteredArray = firstFilter.filter(symbol => !array.includes(symbol));
-    } */
-
-    cardMain(cardToBuild) {
-        cardToBuild.forEach ((symbol, index) => {
-            let filteredArray = this.filterOnce(cardToBuild);
-            let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
-
-            cardToBuild.splice(index, 1, random)
-        })
-        return cardToBuild;
-    }
-
-    cardPlayerFuture (cardToBuild, cardAbove) {
-            let selectFrom = this.filterOnce(cardAbove);
+                cardToBuild.splice(index, 1, random)
+            })
+            return cardToBuild;
+        } else {
+            let selectFrom = this.filter(this.array, cardAbove);
 
             cardToBuild.forEach ((symbol, index) => {
                 let random = selectFrom[Math.floor(Math.random() * selectFrom.length)];
 
                 cardToBuild.splice(index, 1, random)
-                selectFrom = this.filterTwice(selectFrom, cardToBuild, cardAbove);
+                selectFrom = this.filter(selectFrom, cardToBuild, cardAbove);
             })
 
             let randomCommon = cardAbove[Math.floor(Math.random() * cardAbove.length)];
             let randomIndex = Math.floor(Math.random() * cardToBuild.length);
 
             cardToBuild.splice(randomIndex, 0, randomCommon);
-
-            console.log("cardToBuild", cardToBuild);//TEST
             return cardToBuild;
-        
+        }
     }
         
 
-
-    buildCard (cardBuilt) {
+    buildCard (cardElement, cardBuilt) {
         let cardInner = ``;
-
         cardBuilt.forEach((symbol, index) => {
             cardInner += 
             `<li class="symbol ${symbol.name}">
@@ -145,18 +134,15 @@ class Cards {
             </button>
             </li>`;
         })
-
-        //console.log("cardInner", cardInner);//TEST
-        return cardInner;
-
+        cardElement.innerHTML = cardInner;
     }
 
 
+    reset () {
+        this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+        this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
 
-    attachCard (cardElement, innerResult) {
-        cardElement.innerHTML = innerResult;
     }
-    
 
 }
 

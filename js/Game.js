@@ -5,61 +5,35 @@ class Game {
   }
 
   buildMainCard() {
-    this.cards.cardMain(this.cards.mainCard);
-    //change the array in constructor, replace each el with random symbols
-    
-    let inner = this.cards.buildCard(this.cards.mainCard); 
-    //create innerHTML
-
     let mainCardElement = document.getElementById("main-card");
-    this.cards.attachCard(mainCardElement, inner);
-    //attach the innerHTML to the parent
-
-    console.log(this.cards.mainCard);
-
+    this.cards.buildCard(mainCardElement, this.cards.cardRandom(this.cards.mainCard)); 
+    //this.cards.attachCard(mainCardElement, inner);
   }
 
   buildPlayerCard() {
-    console.log("test player", this.cards.mainCard)
-    this.cards.cardPlayerFuture(this.cards.playerCard, this.cards.mainCard);
-    
-    let inner = this.cards.buildCard(this.cards.playerCard); 
-
     let playerCardElement = document.getElementById("player-card");
-    this.cards.attachCard(playerCardElement, inner);
-
+    this.cards.buildCard(playerCardElement, this.cards.cardRandom(this.cards.playerCard, this.cards.mainCard)); 
   }
 
   buildFutureCard() {
-    console.log("test future", this.cards.playerCard)
-    this.cards.cardPlayerFuture(this.cards.futureCard, this.cards.playerCard);
-    
-    let inner = this.cards.buildCard(this.cards.futureCard); 
-
     let futureCardElement = document.getElementById("future-card");
-    this.cards.attachCard(futureCardElement, inner);
-
+    this.cards.buildCard(futureCardElement, this.cards.cardRandom(this.cards.futureCard, this.cards.playerCard)); 
   }
 }
 
-const game = new Game();
 
+const game = new Game();
 
 let startButton = document.getElementById("start");
 
 window.addEventListener('load', (event) => {
   game.buildMainCard();
-  console.log("test main" , game.cards.mainCard)
-
 })
 
 startButton.addEventListener("click", (event) => {
+  game.cards.reset();
   game.buildPlayerCard();
   game.buildFutureCard();
-
-  //console.log("test player", game.cards.playerCard);
-  //console.log("test future", game.cards.futureCard);
-
 })
 
 
