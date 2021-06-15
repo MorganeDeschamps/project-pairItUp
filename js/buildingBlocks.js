@@ -1,8 +1,5 @@
 class PairItUp {
-    constructor(cards, symbols) {
-        this.cards = cards;
-        this.symbols = symbols;
-
+    constructor() {
         this.symbolClicked = 0;
         this.cardsLeft = null;
 
@@ -10,21 +7,56 @@ class PairItUp {
         this.currentTime = 0;
         this.bestTimeSeconds = 0;
         this.bestTime = "";
-      }
 
-
-    createCard() {
-
+        this.minDecElement = document.getElementById('minDec');
+        this.minUniElement = document.getElementById('minUni');
+        this.secDecElement = document.getElementById('secDec');
+        this.secUniElement = document.getElementById('secUni'); 
+        this.bestTimeElement = document.getElementById("best-time");
+        this.cardsLeftElement = document.getElementById("cards-left");
     }
-
-
 
     start() {
         this.currentTime = 0;
         this.cardsLeft = 25;
         this.intervalId = setInterval(() => {
           this.currentTime += 1;
+          this.printTime();
         }, 1000) 
+    }
+
+
+    getTime() {
+        let min = Math.floor(this.currentTime / 60);
+        let sec = this.currentTime % 60;
+
+        let minutes = this.computeTwoDigitNumber(min);
+        let seconds = this.computeTwoDigitNumber(sec);
+
+        return (minutes + seconds); 
+
+    }
+
+    computeTwoDigitNumber(value) {
+        let twoDigits;
+        let valueString = value.toString();
+        if (valueString.length === 1) {
+          twoDigits = "0" + valueString;
+        } else {
+          twoDigits = valueString;
+        }
+        return twoDigits
+    }
+
+    printTime() {
+        let string = this.computeTwoDigitNumber(this.getTime());
+        let time = string.split("");
+      
+        this.minDecElement.innerText = time[0];
+        this.minUniElement.innerText = time[1];
+        this.secDecElement.innerText = time[2];
+        this.secUniElement.innerText = time[3];
+        // ... your code goes here
     }
 
     //symbol click event:
@@ -97,28 +129,6 @@ class PairItUp {
     }
 
 
-
-    getTime() {
-        let min = Math.floor(this.currentTime / 60);
-        let sec = this.currentTime % 60;
-
-        let minutes = this.computeTwoDigitNumber(min);
-        let seconds = this.computeTwoDigitNumber(sec);
-
-        return (minutes + seconds); 
-
-    }
-
-    computeTwoDigitNumber(value) {
-        let twoDigits;
-        let valueString = value.toString();
-        if (valueString.length === 1) {
-          twoDigits = "0" + valueString;
-        } else {
-          twoDigits = valueString;
-        }
-        return twoDigits
-    }
 /*
 
     bonusTime() {

@@ -23,6 +23,7 @@ class Game {
 
 
 const game = new Game();
+const pairItUp = new PairItUp();
 
 let startButton = document.getElementById("start");
 
@@ -31,11 +32,19 @@ window.addEventListener('load', (event) => {
 })
 
 startButton.addEventListener("click", (event) => {
+  pairItUp.start();
   game.cards.reset();
   game.buildPlayerCard();
   game.buildFutureCard();
+
+  let symbolButtons = document.querySelectorAll(".play-button");
+  this.addingEvent(symbolButtons);
+
 })
 
+function addingEvent(array) {
+  array.forEach((button) => button.addEventListener("click", this.clicked, false));
+}
 
 /*
 for each build function I had this at first:
