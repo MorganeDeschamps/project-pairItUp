@@ -212,7 +212,7 @@ const secUniElement = document.getElementById('secUni');
 const bestTimeElement = document.getElementById("best-time");
 
 const cardsLeftElement = document.getElementById("cards-left"); 
-*/
+
 
 function printTime() {
     let string = pairItUp.computeTwoDigitNumber(pairItUp.getTime());
