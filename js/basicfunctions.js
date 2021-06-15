@@ -103,8 +103,8 @@ class PairItUp {
         let minuteString = minutes.toString();
         let secondString = seconds.toString();
 
-        minutes = ("0" + minuteString).sliced(-2);
-        seconds = ("0" + secondString).sliced(-2);
+        minutes = ("0" + minuteString).slice(-2);
+        seconds = ("0" + secondString).slice(-2);
 
         return (minutes + seconds);
     }
