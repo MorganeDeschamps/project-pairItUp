@@ -14,6 +14,8 @@ let mainCardInner = ``;
 let playerCardInner = ``;
 let futureCardInner = ``;
 
+
+/* 
 //TEXT ELEMENTS
 const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
@@ -22,7 +24,7 @@ const secUniElement = document.getElementById('secUni');
 const bestTimeElement = document.getElementById("best-time");
 
 const cardsLeftElement = document.getElementById("cards-left");
-
+ */
 
 
 
@@ -199,7 +201,7 @@ function buildFutureCard () {
 
 
 
-
+/* 
 
 //ADDING INFO ON THE PAGE - TIME / BEST TIME / CARDS LEFT 
 /* 
@@ -232,7 +234,7 @@ function bestTime() {
 function countCardsLeft() {
     cardsLeftElement.innerText = pairItUp.cardsLeft;
 }
-
+ */
 
 const symbols = [
     {name: "apple", img: "apple.png"},
