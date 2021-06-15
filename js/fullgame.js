@@ -21,7 +21,7 @@ const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
 const bestTimeElement = document.getElementById("best-time");
 
-const cardsLeft = document.getElementById("cards-left");
+const cardsLeftElement = document.getElementById("cards-left");
 
 
 
@@ -209,7 +209,7 @@ const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
 const bestTimeElement = document.getElementById("best-time");
 
-const cardsLeft = document.getElementById("cards-left"); 
+const cardsLeftElement = document.getElementById("cards-left"); 
 */
 
 function printTime() {
@@ -229,8 +229,8 @@ function bestTime() {
     bestTimeElement.innerText = bestTime;
 }
 
-function cardsLeft() {
-    cardsLeft.innerText = pairItUp.cardsLeft;
+function countCardsLeft() {
+    cardsLeftElement.innerText = pairItUp.cardsLeft;
 }
 
 
