@@ -63,8 +63,10 @@ class PairItUp {
             splitTime = timeNow[0] + timeNow[1] + ":" + timeNow[2] + timeNow[3];
             this.bestTime = splitTime;
             this.currentTime = 0;
+            return true;
         } else {
             this.currentTime = 0;
+            return false;
         }
     }
 
@@ -97,19 +99,26 @@ class PairItUp {
 
 
     getTime() {
-        let minutes = Math.floor(this.currentTime / 60);
-        let seconds = Math.floor(this.currentTime % 60);
+        let min = Math.floor(this.currentTime / 60);
+        let sec = this.currentTime % 60;
 
-        let minuteString = minutes.toString();
-        let secondString = seconds.toString();
+        let minutes = this.computeTwoDigitNumber(min);
+        let seconds = this.computeTwoDigitNumber(sec);
 
-        minutes = ("0" + minuteString).slice(-2);
-        seconds = ("0" + secondString).slice(-2);
+        return (minutes + seconds); 
 
-        return (minutes + seconds);
     }
 
-
+    computeTwoDigitNumber(value) {
+        let twoDigits;
+        let valueString = value.toString();
+        if (valueString.length === 1) {
+          twoDigits = "0" + valueString;
+        } else {
+          twoDigits = valueString;
+        }
+        return twoDigits
+    }
 /*
 
     bonusTime() {

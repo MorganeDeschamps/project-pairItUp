@@ -1,7 +1,32 @@
 const pairItUp = new PairItUp();
 
+//BUILDING BLOCKS
+//CARDS
+let mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
+let playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+let futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+
+let mainCardElement = document.getElementById("main-card");
+let playerCardElement = document.getElementById("player-card");
+let futureCardElement = document.getElementById("future-card");
+
+let mainCardInner = ``;
+let playerCardInner = ``;
+let futureCardInner = ``;
+
+//TEXT ELEMENTS
+const minDecElement = document.getElementById('minDec');
+const minUniElement = document.getElementById('minUni');
+const secDecElement = document.getElementById('secDec');
+const secUniElement = document.getElementById('secUni');
+const bestTimeElement = document.getElementById("best-time");
+
+const cardsLeft = document.getElementById("cards-left");
 
 
+
+
+//EVENT LISTENER LOAD
 window.addEventListener('load', (event) => {
   console.log('game is loaded');
   //console.log(symbols.length);
@@ -16,6 +41,7 @@ let startButton = document.getElementById("start");
 
 startButton.addEventListener("click", (event) => {
     pairItUp.start()
+    const interval = setInterval(this.printTime, 500);
 
     playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
     futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
@@ -48,26 +74,12 @@ function clicked(event) {
     //console.log(sym2)
 
     pairItUp.checkIfSame(sym1, sym2)
+
+    if(pairItUp.bestTimeUpdate()) {this.bestTime()};
     //if same -> checkIfWon() -> if yes youWin() -> bestTimeUpdate()
     //if not -> wrongGuess() -> if 1st attempt malusTime() -> if not gameOver()
 }
 
-
-
-let mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
-let playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-let futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-
-
-
-let mainCardElement = document.getElementById("main-card");
-let playerCardElement = document.getElementById("player-card");
-let futureCardElement = document.getElementById("future-card");
-
-
-let mainCardInner = ``;
-let playerCardInner = ``;
-let futureCardInner = ``;
 
 
 
@@ -186,6 +198,40 @@ function buildFutureCard () {
 //SWITCHING CARDS 
 
 
+
+
+
+//ADDING INFO ON THE PAGE - TIME / BEST TIME / CARDS LEFT 
+/* 
+const minDecElement = document.getElementById('minDec');
+const minUniElement = document.getElementById('minUni');
+const secDecElement = document.getElementById('secDec');
+const secUniElement = document.getElementById('secUni');
+const bestTimeElement = document.getElementById("best-time");
+
+const cardsLeft = document.getElementById("cards-left"); 
+*/
+
+function printTime() {
+    let string = pairItUp.computeTwoDigitNumber(pairItUp.getTime());
+    let time = string.split("");
+  
+    minDecElement.innerText = time[0];
+    minUniElement.innerText = time[1];
+
+    secDecElement.innerText = time[2];
+    secUniElement.innerText = time[3];
+    // ... your code goes here
+}
+
+function bestTime() {
+    let bestTime = pairItUp.bestTime;
+    bestTimeElement.innerText = bestTime;
+}
+
+function cardsLeft() {
+    cardsLeft.innerText = pairItUp.cardsLeft;
+}
 
 
 const symbols = [
