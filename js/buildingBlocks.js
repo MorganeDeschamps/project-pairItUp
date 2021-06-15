@@ -86,8 +86,8 @@ class PairItUp {
 
     finalCheck (result) {
         if (result) {
-          pairItUp.cardsLeft--;
-          pairItUp.symbolClicked = 0;
+          this.cardsLeft -= 1;
+          this.symbolClicked = 0;
           return this.didYouWin();
         } else {
           return this.wrongGuess();

@@ -22,14 +22,16 @@ class Game {
   }
 
   moveUp () {
+    this.cards.mainCard = this.cards.playerCard;
     this.mainCardElement.innerHTML = this.playerCardElement.innerHTML;
-    this.playerCardElement.innerHTML = this.futureCardElement.innerHTML
-    if (this.pairItUp.cardsLeft > 2) {this.buildFutureCard};
+
+    this.cards.playerCard = this.cards.futureCard;
+    this.playerCardElement.innerHTML = this.futureCardElement.innerHTML;
   }
 
   endGame() {
+    this.cards.resetCards(3);
     this.buildMainCard();
-    this.cards.resetCards();
     this.pairItUp.stop();
   }
   
@@ -46,8 +48,11 @@ window.addEventListener('load', (event) => {
 })
 
 startButton.addEventListener("click", (event) => {
+  //pairItUp.intervalId = null;
+  //interval getting crazy if you click start more than once - not sure why
+  //tried "resetting" it here (l61) and on pairItUp.start() but no luck
   pairItUp.start();
-  game.cards.resetCards();
+  game.cards.resetCards(2);
   game.buildPlayerCard();
   game.buildFutureCard();
 
@@ -56,7 +61,9 @@ startButton.addEventListener("click", (event) => {
 })
 
 
-
+//issue with the second round 
+//first round works nicely
+//then cannot click on buttons anymore
 
 function clicked(event) {
   pairItUp.symbolClicked += 1;
@@ -78,16 +85,22 @@ function clicked(event) {
 function nextRound(result) {
   if(result === "correct") {
     pairItUp.symbolClicked = 0;
-    game.moveUp()}
+    game.moveUp();
+    game.cards.resetCards(1);
+    game.buildFutureCard();
+  }
   else if (result === "wrong") {
-    console.log("Wrong guess! One more chance...")}
+    console.log("Wrong guess! One more chance...")
+  }
   else if (result === "win") {
     pairItUp.bestTimeUpdate();
     game.endGame();
-    console.log("YOU WIN")}
+    console.log("YOU WIN")
+  }
   else if (result === "lose") {
     game.endGame();
-    console.log("LOSER")}
+    console.log("LOSER")
+  }
   else {console.log("what?")}
 }
 
