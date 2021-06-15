@@ -87,37 +87,39 @@ class Cards {
     }
     
 
-    filterArray(compareItself, otherArray) {
-        let filteredArray;
-        if (otherArray) {
-            let firstFilter = this.array.filter(symbol => !otherArray.includes(symbol));
-            filteredArray = firstFilter.filter(symbol => !compareItself.includes(symbol));
-        } else {
-            filteredArray = this.array.filter(symbol => !compareItself.includes(symbol));
-        }
+    filterOnce(compareTo) {
+        let filteredArray = this.array.filter(symbol => !compareTo.includes(symbol));
         return filteredArray;
     }
 
+    filterTwice(origin, current, previous) {
+        let filteredArray = origin.filter(el => !current.includes(el) && !previous.includes(el))
+        return filteredArray;
+    }
+/* 
+    filterTwice(array, otherArray) {
+            let firstFilter = this.array.filter(symbol => !otherArray.includes(symbol));
+            filteredArray = firstFilter.filter(symbol => !array.includes(symbol));
+    } */
 
+    cardMain(cardToBuild) {
+        cardToBuild.forEach ((symbol, index) => {
+            let filteredArray = this.filterOnce(cardToBuild);
+            let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
 
-    cardArray (cardToBuild, cardAbove) {
+            cardToBuild.splice(index, 1, random)
+        })
+        return cardToBuild;
+    }
 
-        if(!cardAbove) {
+    cardPlayerFuture (cardToBuild, cardAbove) {
+            let selectFrom = this.filterOnce(cardAbove);
+
             cardToBuild.forEach ((symbol, index) => {
-                let filteredArray = this.filterArray(cardToBuild);
-                let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
+                let random = selectFrom[Math.floor(Math.random() * selectFrom.length)];
 
                 cardToBuild.splice(index, 1, random)
-            })
-
-            return cardToBuild;
-
-        } else if (cardAbove) {
-            cardToBuild.forEach ((symbol, index) => {
-                let filteredArray = this.filterArray(cardToBuild, cardAbove);
-                let random = filteredArray[Math.floor(Math.random() * filteredArray.length)];
-
-                cardToBuild.splice(index, 1, random)
+                selectFrom = this.filterTwice(selectFrom, cardToBuild, cardAbove);
             })
 
             let randomCommon = cardAbove[Math.floor(Math.random() * cardAbove.length)];
@@ -125,8 +127,9 @@ class Cards {
 
             cardToBuild.splice(randomIndex, 0, randomCommon);
 
+            console.log("cardToBuild", cardToBuild);//TEST
             return cardToBuild;
-        }
+        
     }
         
 
@@ -143,6 +146,7 @@ class Cards {
             </li>`;
         })
 
+        //console.log("cardInner", cardInner);//TEST
         return cardInner;
 
     }

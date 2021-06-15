@@ -26,7 +26,7 @@ const bestTimeElement = document.getElementById("best-time");
 const cardsLeftElement = document.getElementById("cards-left");
  
 
-
+/* 
 //EVENT LISTENER LOAD
 window.addEventListener('load', (event) => {
   console.log('game is loaded');
@@ -35,7 +35,7 @@ window.addEventListener('load', (event) => {
   this.buildFirstCard();
   //this.playerCardArray();
 })
-
+ */
 
 //START GAME 
 let startButton = document.getElementById("start");

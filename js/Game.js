@@ -2,15 +2,11 @@ class Game {
 
   constructor() {
     this.cards = new Cards;
-    //should I have the cards arrays here or in the Cards class like I've done? 
-    //check with Marco or Fede
   }
 
   buildMainCard() {
-    let card = this.cards.cardArray(this.cards.mainCard);
-    this.cards.mainCard = card;
-    //create the array and change it in constructor
-    //is the card var necessary? check with marco or fede
+    this.cards.cardMain(this.cards.mainCard);
+    //change the array in constructor, replace each el with random symbols
     
     let inner = this.cards.buildCard(this.cards.mainCard); 
     //create innerHTML
@@ -19,11 +15,13 @@ class Game {
     this.cards.attachCard(mainCardElement, inner);
     //attach the innerHTML to the parent
 
+    console.log(this.cards.mainCard);
+
   }
 
   buildPlayerCard() {
-    let card = this.cards.cardArray(this.cards.playerCard, this.cards.mainCard);
-    this.cards.playerCard = card;
+    console.log("test player", this.cards.mainCard)
+    this.cards.cardPlayerFuture(this.cards.playerCard, this.cards.mainCard);
     
     let inner = this.cards.buildCard(this.cards.playerCard); 
 
@@ -33,8 +31,7 @@ class Game {
   }
 
   buildFutureCard() {
-    let card = this.cards.cardArray(this.cards.futureCard, this.cards.PlayerCard);
-    this.cards.futureCard = card;
+    this.cards.cardPlayerFuture(this.cards.futureCard, this.cards.PlayerCard);
     
     let inner = this.cards.buildCard(this.cards.futureCard); 
 
@@ -44,15 +41,37 @@ class Game {
   }
 }
 
-window.addEventListener('load', (event) => {
-  const game = new Game()
+const game = new Game();
 
+
+let startButton = document.getElementById("start");
+
+window.addEventListener('load', (event) => {
   game.buildMainCard();
-  
+  console.log("test main" , game.cards.mainCard)
+
+})
+
+startButton.addEventListener("click", (event) => {
+  game.buildPlayerCard();
+  game.buildFutureCard();
+
+  //console.log("test player", game.cards.playerCard);
+  //console.log("test future", game.cards.futureCard);
+
 })
 
 
+/*
+for each build function I had this at first:
+    let card = this.cards.cardArray(this.cards.futureCard, this.cards.PlayerCard);
+    this.cards.futureCard = card;
 
+now replaced with:
+    this.cards.cardArray(this.cards.futureCard, this.cards.PlayerCard);
+
+I think it's better but not 100% certain it will work with future cards
+*/
 
 
 
