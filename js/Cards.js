@@ -79,14 +79,11 @@ const symbols = [
 class Cards {
     constructor() {
         this.array = symbols;
-        this.name = "";
-        this.img = "";
 
-        /*
         this.mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
         this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
         this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-        */
+        
     }
     
 

@@ -1,6 +1,6 @@
 const pairItUp = new PairItUp();
 
-//BUILDING BLOCKS
+/* //BUILDING BLOCKS
 //CARDS
 let mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
 let playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
@@ -13,9 +13,9 @@ let futureCardElement = document.getElementById("future-card");
 let mainCardInner = ``;
 let playerCardInner = ``;
 let futureCardInner = ``;
+ */
 
 
-/* 
 //TEXT ELEMENTS
 const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
@@ -24,8 +24,7 @@ const secUniElement = document.getElementById('secUni');
 const bestTimeElement = document.getElementById("best-time");
 
 const cardsLeftElement = document.getElementById("cards-left");
- */
-
+ 
 
 
 //EVENT LISTENER LOAD
@@ -84,7 +83,7 @@ function clicked(event) {
 
 
 
-
+/* 
 
 //FIRST CARD
 function firstCardArray () {
@@ -116,10 +115,10 @@ function buildFirstCard () {
 }
 
 
-/*if (same) {
+if (same) {
     mainCardInner = playerCardInner
 }
-*/
+
 
 //PLAYER CARD
 
@@ -197,7 +196,7 @@ function buildFutureCard () {
     //console.log(inner);
 }
 
-
+ */
 
 
 //SWITCHING CARDS 
@@ -238,7 +237,7 @@ function countCardsLeft() {
     cardsLeftElement.innerText = pairItUp.cardsLeft;
 }
  */
-
+/* 
 const symbols = [
     {name: "apple", img: "apple.png"},
     {name: "baguettemagique", img: "baguettemagique.png"},
@@ -316,3 +315,4 @@ const symbols = [
     {name: "witchhat", img: "witchhat.png"},
     {name: "wood", img: "wood.png"}
 ]
+ */
