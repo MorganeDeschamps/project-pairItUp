@@ -83,7 +83,10 @@ class Cards {
         this.mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
         this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
         this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-        
+
+        this.mainCardElement = document.getElementById("main-card");
+        this.playerCardElement = document.getElementById("player-card");
+        this.futureCardElement = document.getElementById("future-card");
     }
 
     filter(origin, current, previous) {
@@ -135,6 +138,19 @@ class Cards {
             </li>`;
         })
         cardElement.innerHTML = cardInner;
+    }
+
+
+    buildMainCard() {
+        this.buildCard(this.mainCardElement, this.cardRandom(this.mainCard)); 
+    }
+    
+      buildPlayerCard() {
+        this.buildCard(this.playerCardElement, this.cardRandom(this.playerCard, this.mainCard));
+    }
+    
+      buildFutureCard() {
+        this.buildCard(this.futureCardElement, this.cardRandom(this.futureCard, this.playerCard)); 
     }
 
 
