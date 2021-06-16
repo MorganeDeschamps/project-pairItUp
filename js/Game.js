@@ -5,7 +5,6 @@ class Game {
     this.pairItUp = new PairItUp();
 
     this.startButton = document.getElementById("start");
-    this.symbolButtons = document.getElementsByClassName("play-button");
   }
 
   start() {
@@ -18,10 +17,6 @@ class Game {
     this.cards.buildFutureCard();
   }
 
-
-  buttons() {
-    this.symbolButtons.onclick = this.clicked();
-  }
   //issue with the second round 
   //first round works nicely
   //then cannot click on buttons anymore
@@ -29,8 +24,8 @@ class Game {
     this.pairItUp.symbolClicked += 1;
 
     let sym1 = this.cards.mainCard.map(element => element.name);
-    let sym2 = event.alt;
-  
+    let sym2 = event.currentTarget.alt;
+    console.log(sym2);
     //let result = this.pairItUp.checkIfSame(sym1, sym2)
     let finalResult = this.pairItUp.finalCheck(this.pairItUp.checkIfSame(sym1, sym2));
   
@@ -80,7 +75,7 @@ class Game {
 
 const game = new Game();
 const pairItUp = new PairItUp();
-
+let symbolButtons = document.querySelectorAll(".play-button");
 
 window.addEventListener('load', (event) => {
   game.cards.buildMainCard();
@@ -88,8 +83,20 @@ window.addEventListener('load', (event) => {
 
 game.startButton.addEventListener("click", (event) => {
   game.start();
-  game.buttons();
+  buttons();
 })
+
+function buttons() {
+  symbolButtons.forEach((button) => 
+    {button.addEventListener("click", (event) => game.clicked(event))}
+  )
+}
+
+/* 
+function buttons(event) {
+  game.symbolButtons.addEventListener = game.clicked(event);
+}
+ */
 
 
 //game.symbolButtons.forEach((button) => button.addEventListener("click", this.clicked, false));
@@ -150,6 +157,11 @@ I think it's better but not 100% certain it will work with future cards
 buttons() {
     //this.symbolButtons.forEach((button) => button.addEventListener("click", this.clicked, false));
     this.symbolButtons.addEventListener("click", this.clicked, false);
+  }
+
+
+  buttons() {
+    this.symbolButtons.forEach((button) => button.onclick = this.clicked)
   }
 */
 
