@@ -1,6 +1,5 @@
 window.addEventListener('load', (event) => {
   const game = new Game();
-  const pairItUp = new PairItUp();
   const startButton = document.getElementById("start");
   game.cards.buildMainCard();
 
@@ -11,7 +10,7 @@ window.addEventListener('load', (event) => {
 
   })
 
-  document.getElementById("player-card").addEventListener("click", game.playHand)
+  document.getElementById("player-card").addEventListener("click", (event) => game.playHand(event))
 
 
 })
@@ -23,7 +22,7 @@ function buttons() {
   })
 }
 
-function nextRound(result) {
+/* function nextRound(result) {
   if (result === "correct") {
     pairItUp.symbolClicked = 0;
     game.moveUp();
@@ -41,4 +40,4 @@ function nextRound(result) {
   } else {
     console.log("what?")
   }
-}
+} */

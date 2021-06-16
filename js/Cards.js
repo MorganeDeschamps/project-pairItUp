@@ -357,12 +357,12 @@ class Cards {
             cardInner +=
                 `<li class="symbol ${symbol.name}">
             <button class="play-button">
-            <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
+            <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" name="${symbol.name}" width="100" height="100">
             </button>
             </li>`;
         })
         cardElement.innerHTML = cardInner;
-        cardElement.querySelector("button").addEventListener("click", )
+        //cardElement.querySelector("button").addEventListener("click", )
     }
 
 
@@ -380,21 +380,21 @@ class Cards {
 
 
     resetCards(number) {
-        if (number === 3) {
-            this.mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
-            this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-            this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-        } else if (number === 2) {
-            this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-            this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-
-        } else if (number === 1) {
-            this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-        } else {
-            console.log("you haven't reset properly")
+        switch (number) {
+            case 3:
+                this.mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
+                this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                break;
+            case 2:
+                this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                break;
+            case 1:
+                this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                break;
+            default:
+                console.log("you haven't reset properly")
         }
-
     }
-
-
 }

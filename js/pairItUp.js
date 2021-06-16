@@ -11,7 +11,7 @@ class PairItUp {
         this.minDecElement = document.getElementById('minDec');
         this.minUniElement = document.getElementById('minUni');
         this.secDecElement = document.getElementById('secDec');
-        this.secUniElement = document.getElementById('secUni'); 
+        this.secUniElement = document.getElementById('secUni');
         this.bestTimeElement = document.getElementById("best-time");
         this.cardsLeftElement = document.getElementById("cards-left");
     }
@@ -19,15 +19,17 @@ class PairItUp {
     start() {
         this.currentTime = 0;
         this.cardsLeftElement.innerText = this.cardsLeft;
+        if (this.intervalId) clearInterval(this.intervalId)
         this.intervalId = setInterval(() => {
-          this.currentTime += 1;
-          this.printTime(this.getTime());
-        }, 1000) 
+            this.currentTime += 1;
+            this.printTime(this.getTime());
+        }, 1000)
     }
 
     stop() {
         this.symbolClicked = 0;
         this.cardsLeft = 25;
+        clearInterval(this.intervalId)
         this.intervalId = null;
         this.currentTime = 0;
     }
@@ -43,16 +45,16 @@ class PairItUp {
         let string = (minutes + seconds);
         let time = string.split("");
 
-        return time; 
+        return time;
     }
 
     computeTwoDigitNumber(value) {
         let twoDigits;
         let valueString = value.toString();
         if (valueString.length === 1) {
-          twoDigits = "0" + valueString;
+            twoDigits = "0" + valueString;
         } else {
-          twoDigits = valueString;
+            twoDigits = valueString;
         }
         return twoDigits
     }
@@ -76,7 +78,7 @@ class PairItUp {
 
     //LOGIC TIME
     checkIfSame(sym1, sym2) {
-        if(sym1.includes(sym2)) {
+        if (sym1.includes(sym2)) {
             return true
         } else {
             return false
@@ -84,19 +86,22 @@ class PairItUp {
     }
 
 
-    finalCheck (result) {
+    finalCheck(result) {
         if (result) {
-          this.cardsLeft -= 1;
-          this.symbolClicked = 0;
-          return this.didYouWin();
+            this.cardsLeft -= 1;
+            this.symbolClicked = 0;
+            return this.didYouWin();
         } else {
-          return this.wrongGuess();
+            return this.wrongGuess();
         }
     }
 
     didYouWin() {
-        if(this.cardsLeft === 0) {return "win"}
-        else {return "correct"}
+        if (this.cardsLeft === 0) {
+            return "win"
+        } else {
+            return "correct"
+        }
     }
 
 

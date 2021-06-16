@@ -3,7 +3,6 @@ class Game {
   constructor() {
     this.cards = new Cards();
     this.pairItUp = new PairItUp();
-
   }
 
   start() {
@@ -20,52 +19,53 @@ class Game {
   //first round works nicely
   //then cannot click on buttons anymore
   playHand(event) {
+    this.pairItUp.symbolClicked += 1;
 
-    console.log(event.target)
-    /*     this.pairItUp.symbolClicked += 1;
+    let sym1 = this.cards.mainCard.map(element => element.name);
+    let sym2 = event.target.name;
+    //console.log(sym2);
+    //let result = this.pairItUp.checkIfSame(sym1, sym2)
+    let finalResult = this.pairItUp.finalCheck(this.pairItUp.checkIfSame(sym1, sym2));
 
-        let sym1 = this.cards.mainCard.map(element => element.name);
-        let sym2 = event.target.alt;
-        console.log(sym2);
-        //let result = this.pairItUp.checkIfSame(sym1, sym2)
-        let finalResult = this.pairItUp.finalCheck(this.pairItUp.checkIfSame(sym1, sym2));
-
-        this.nextRound(finalResult); */
+    this.nextRound(finalResult);
   }
 
   nextRound(result) {
-    if (result === "correct") {
-      this.pairItUp.symbolClicked = 0;
-      this.moveUp();
-      this.cards.resetCards(1);
-      this.cards.buildFutureCard();
-    } else if (result === "wrong") {
-      console.log("Wrong guess! One more chance...")
-    } else if (result === "win") {
-      this.pairItUp.bestTimeUpdate();
-      this.endGame();
-      console.log("YOU WIN")
-    } else if (result === "lose") {
-      this.endGame();
-      console.log("LOSER")
-    } else {
-      console.log("what?")
+    switch (result) {
+      case "correct":
+        this.pairItUp.symbolClicked = 0;
+        this.moveUp();
+        this.cards.resetCards(1);
+        this.cards.buildFutureCard();
+        break;
+      case "wrong":
+        console.log("Wrong guess! One more chance...")
+        break;
+      case "win":
+        this.pairItUp.bestTimeUpdate();
+        this.endGame();
+        console.log("YOU WIN")
+        break;
+      case "lose":
+        this.endGame();
+        console.log("LOSER")
+        break
+      default:
+        console.log("what?", result)
     }
   }
 
-
-
   moveUp() {
     this.cards.mainCard = this.cards.playerCard;
-    this.mainCardElement.innerHTML = this.playerCardElement.innerHTML;
+    this.cards.mainCardElement.innerHTML = this.cards.playerCardElement.innerHTML;
 
     this.cards.playerCard = this.cards.futureCard;
-    this.playerCardElement.innerHTML = this.futureCardElement.innerHTML;
+    this.cards.playerCardElement.innerHTML = this.cards.futureCardElement.innerHTML;
   }
 
   endGame() {
     this.cards.resetCards(3);
-    this.buildMainCard();
+    this.cards.buildMainCard();
     this.pairItUp.stop();
   }
 
