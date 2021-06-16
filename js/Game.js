@@ -1,10 +1,9 @@
 class Game {
 
   constructor() {
-    this.cards = new Cards;
+    this.cards = new Cards();
     this.pairItUp = new PairItUp();
 
-    this.startButton = document.getElementById("start");
   }
 
   start() {
@@ -20,43 +19,43 @@ class Game {
   //issue with the second round 
   //first round works nicely
   //then cannot click on buttons anymore
-  clicked(event) {
-    this.pairItUp.symbolClicked += 1;
+  playHand(event) {
 
-    let sym1 = this.cards.mainCard.map(element => element.name);
-    let sym2 = event.currentTarget.alt;
-    console.log(sym2);
-    //let result = this.pairItUp.checkIfSame(sym1, sym2)
-    let finalResult = this.pairItUp.finalCheck(this.pairItUp.checkIfSame(sym1, sym2));
-  
-    this.nextRound(finalResult);
+    console.log(event.target)
+    /*     this.pairItUp.symbolClicked += 1;
+
+        let sym1 = this.cards.mainCard.map(element => element.name);
+        let sym2 = event.target.alt;
+        console.log(sym2);
+        //let result = this.pairItUp.checkIfSame(sym1, sym2)
+        let finalResult = this.pairItUp.finalCheck(this.pairItUp.checkIfSame(sym1, sym2));
+
+        this.nextRound(finalResult); */
   }
-  
+
   nextRound(result) {
-    if(result === "correct") {
+    if (result === "correct") {
       this.pairItUp.symbolClicked = 0;
       this.moveUp();
       this.cards.resetCards(1);
       this.cards.buildFutureCard();
-    }
-    else if (result === "wrong") {
+    } else if (result === "wrong") {
       console.log("Wrong guess! One more chance...")
-    }
-    else if (result === "win") {
+    } else if (result === "win") {
       this.pairItUp.bestTimeUpdate();
       this.endGame();
       console.log("YOU WIN")
-    }
-    else if (result === "lose") {
+    } else if (result === "lose") {
       this.endGame();
       console.log("LOSER")
+    } else {
+      console.log("what?")
     }
-    else {console.log("what?")}
   }
-  
-  
 
-  moveUp () {
+
+
+  moveUp() {
     this.cards.mainCard = this.cards.playerCard;
     this.mainCardElement.innerHTML = this.playerCardElement.innerHTML;
 
@@ -69,28 +68,9 @@ class Game {
     this.buildMainCard();
     this.pairItUp.stop();
   }
-  
+
 }
 
-
-const game = new Game();
-const pairItUp = new PairItUp();
-let symbolButtons = document.querySelectorAll(".play-button");
-
-window.addEventListener('load', (event) => {
-  game.cards.buildMainCard();
-})
-
-game.startButton.addEventListener("click", (event) => {
-  game.start();
-  buttons();
-})
-
-function buttons() {
-  symbolButtons.forEach((button) => 
-    {button.addEventListener("click", (event) => game.clicked(event))}
-  )
-}
 
 /* 
 function buttons(event) {
@@ -119,27 +99,7 @@ function clicked(event) {
 }
  */
 
-function nextRound(result) {
-  if(result === "correct") {
-    pairItUp.symbolClicked = 0;
-    game.moveUp();
-    game.cards.resetCards(1);
-    game.buildFutureCard();
-  }
-  else if (result === "wrong") {
-    console.log("Wrong guess! One more chance...")
-  }
-  else if (result === "win") {
-    pairItUp.bestTimeUpdate();
-    game.endGame();
-    console.log("YOU WIN")
-  }
-  else if (result === "lose") {
-    game.endGame();
-    console.log("LOSER")
-  }
-  else {console.log("what?")}
-}
+
 
 /*
 for each build function I had this at first:
