@@ -132,13 +132,12 @@ class Cards {
         cardBuilt.forEach((symbol, index) => {
             cardInner +=
                 `<li class="symbol ${symbol.name}">
-            <button class="play-button">
-            <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" name="${symbol.name}" width="100" height="100">
-            </button>
-            </li>`;
+                <button class="play-button">
+                <img class="img${index}" src="img/${symbol.img}" alt="${symbol.name}" name="${symbol.   name}" width="100" height="100">
+                </button>
+                </li>`;
         })
         cardElement.innerHTML = cardInner;
-        //cardElement.querySelector("button").addEventListener("click", )
     }
 
 
