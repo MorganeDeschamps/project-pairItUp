@@ -21,3 +21,5 @@ function buttons() {
     button.addEventListener("click", (event) => game.clicked(event))
   })
 }
+
+//note

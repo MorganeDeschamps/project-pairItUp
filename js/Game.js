@@ -65,6 +65,7 @@ class Game {
 
 }
 
+//something
 /* 
 function clicked(event) {
   pairItUp.symbolClicked += 1;
