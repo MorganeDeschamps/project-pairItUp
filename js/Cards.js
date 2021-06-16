@@ -99,29 +99,26 @@ class Cards {
         return filteredArray;
     }
 
+    random(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
     cardRandom(cardToBuild, cardAbove) {
         if (!cardAbove) {
             cardToBuild.forEach((symbol, index) => {
                 let selectFrom = this.filter(this.array, cardToBuild);
-                let random = selectFrom[Math.floor(Math.random() * selectFrom.length)];
 
-                cardToBuild.splice(index, 1, random)
+                cardToBuild.splice(index, 1, this.random(selectFrom))
             })
             return cardToBuild;
         } else {
             let selectFrom = this.filter(this.array, cardAbove);
 
             cardToBuild.forEach((symbol, index) => {
-                let random = selectFrom[Math.floor(Math.random() * selectFrom.length)];
-
-                cardToBuild.splice(index, 1, random)
+                cardToBuild.splice(index, 1, this.random(selectFrom))
                 selectFrom = this.filter(selectFrom, cardToBuild, cardAbove);
             })
-
-            let randomCommon = cardAbove[Math.floor(Math.random() * cardAbove.length)];
-            let randomIndex = Math.floor(Math.random() * cardToBuild.length);
-
-            cardToBuild.splice(randomIndex, 0, randomCommon);
+            cardToBuild.splice(cardToBuild.indexOf(this.random(cardToBuild)), 0, this.random(cardAbove));
             return cardToBuild;
         }
     }
