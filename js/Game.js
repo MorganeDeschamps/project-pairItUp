@@ -64,7 +64,6 @@ class Game {
   }
 
 }
-
 //something
 /* 
 function clicked(event) {

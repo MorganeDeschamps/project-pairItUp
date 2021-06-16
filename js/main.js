@@ -11,7 +11,11 @@ window.addEventListener('load', (event) => {
   document.getElementById("player-card").addEventListener("click", (event) => game.playHand(event))
 })
 
-/* const symbolButtons = document.querySelectorAll(".play-button");
+/*
+const cardsTest = new CardsTest();
+
+console.log(cardsTest.buildCard("main"));
+ const symbolButtons = document.querySelectorAll(".play-button");
 console.log(symbolButtons);
 
 function buttons() {

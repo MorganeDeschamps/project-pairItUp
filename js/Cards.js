@@ -80,10 +80,10 @@ class Cards {
     constructor() {
         this.array = symbols;
 
-        this.mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
-        this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-        this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-
+        this.mainCard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        this.playerCard = [1, 2, 3, 4, 5, 6, 7, 8];
+        this.futureCard = [1, 2, 3, 4, 5, 6, 7, 8];
+        
         this.mainCardElement = document.getElementById("main-card");
         this.playerCardElement = document.getElementById("player-card");
         this.futureCardElement = document.getElementById("future-card");
@@ -157,21 +157,20 @@ class Cards {
     resetCards(number) {
         switch (number) {
             case 3:
-                this.mainCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7", "sym8"];
-                this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-                this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                this.mainCard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                this.playerCard = [1, 2, 3, 4, 5, 6, 7, 8];
+                this.futureCard = [1, 2, 3, 4, 5, 6, 7, 8];
                 break;
             case 2:
-                this.playerCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
-                this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                this.playerCard = [1, 2, 3, 4, 5, 6, 7, 8];
+                this.futureCard = [1, 2, 3, 4, 5, 6, 7, 8];
                 break;
             case 1:
-                this.futureCard = ["sym0", "sym1", "sym2", "sym3", "sym4", "sym5", "sym6", "sym7"];
+                this.futureCard = [1, 2, 3, 4, 5, 6, 7, 8];
                 break;
             default:
                 console.log("you haven't reset properly")
         }
     }
 }
-
 //note
