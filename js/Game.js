@@ -6,25 +6,19 @@ class Game {
   }
 
   start() {
-    //pairItUp.intervalId = null;
-    //interval getting crazy if you click start more than once - not sure why
-    //tried "resetting" it here (l61) and on pairItUp.start() but no luck
     this.pairItUp.start();
     this.cards.resetCards(2);
-    this.cards.buildPlayerCard();
-    this.cards.buildFutureCard();
+    this.cards.buildCardAll("player");
+    this.cards.buildCardAll("future");
   }
 
-  //issue with the second round 
-  //first round works nicely
-  //then cannot click on buttons anymore
   playHand(event) {
     this.pairItUp.symbolClicked += 1;
 
     let sym1 = this.cards.mainCard.map(element => element.name);
     let sym2 = event.target.name;
     //console.log(sym2);
-    //let result = this.pairItUp.checkIfSame(sym1, sym2)
+
     let finalResult = this.pairItUp.finalCheck(this.pairItUp.checkIfSame(sym1, sym2));
 
     this.nextRound(finalResult);
@@ -36,7 +30,7 @@ class Game {
         this.pairItUp.symbolClicked = 0;
         this.moveUp();
         this.cards.resetCards(1);
-        this.cards.buildFutureCard();
+        this.cards.buildCardAll("future");
         break;
       case "wrong":
         console.log("Wrong guess! One more chance...")
@@ -65,21 +59,11 @@ class Game {
 
   endGame() {
     this.cards.resetCards(3);
-    this.cards.buildMainCard();
+    this.cards.buildCardAll("main");
     this.pairItUp.stop();
   }
 
 }
-
-
-/* 
-function buttons(event) {
-  game.symbolButtons.addEventListener = game.clicked(event);
-}
- */
-
-
-//game.symbolButtons.forEach((button) => button.addEventListener("click", this.clicked, false));
 
 /* 
 function clicked(event) {
@@ -126,7 +110,25 @@ buttons() {
 */
 
 
-
+/* function nextRound(result) {
+  if (result === "correct") {
+    pairItUp.symbolClicked = 0;
+    game.moveUp();
+    game.cards.resetCards(1);
+    game.buildFutureCard();
+  } else if (result === "wrong") {
+    console.log("Wrong guess! One more chance...")
+  } else if (result === "win") {
+    pairItUp.bestTimeUpdate();
+    game.endGame();
+    console.log("YOU WIN")
+  } else if (result === "lose") {
+    game.endGame();
+    console.log("LOSER")
+  } else {
+    console.log("what?")
+  }
+} */
 
 
 

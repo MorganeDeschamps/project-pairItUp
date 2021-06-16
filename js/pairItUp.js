@@ -1,7 +1,7 @@
 class PairItUp {
     constructor() {
         this.symbolClicked = 0;
-        this.cardsLeft = 25;
+        this.cardsLeft = null;
 
         this.intervalId = null;
         this.currentTime = 0;
@@ -18,7 +18,7 @@ class PairItUp {
 
     start() {
         this.currentTime = 0;
-        this.cardsLeftElement.innerText = this.cardsLeft;
+        this.howManyCardsLeft("start");
         if (this.intervalId) clearInterval(this.intervalId)
         this.intervalId = setInterval(() => {
             this.currentTime += 1;
@@ -28,10 +28,25 @@ class PairItUp {
 
     stop() {
         this.symbolClicked = 0;
-        this.cardsLeft = 25;
+        this.howManyCardsLeft("stop");
         clearInterval(this.intervalId)
         this.intervalId = null;
-        this.currentTime = 0;
+    }
+
+    howManyCardsLeft(value) {
+        switch (value) {
+            case "start": 
+                this.cardsLeft = 5;
+                break;
+            case "update":
+                this.cardsLeft -=1;
+                break;
+            case "stop":
+                this.cardsLeft = null;
+                break;
+        }
+
+        this.cardsLeftElement.innerText = this.cardsLeft;
     }
 
     //TIME STUFF
@@ -76,9 +91,10 @@ class PairItUp {
 
 
 
-    //LOGIC TIME
+    //LOGIC
     checkIfSame(sym1, sym2) {
         if (sym1.includes(sym2)) {
+            this.howManyCardsLeft("update");
             return true
         } else {
             return false
@@ -88,7 +104,6 @@ class PairItUp {
 
     finalCheck(result) {
         if (result) {
-            this.cardsLeft -= 1;
             this.symbolClicked = 0;
             return this.didYouWin();
         } else {
@@ -104,8 +119,6 @@ class PairItUp {
         }
     }
 
-
-    //if wrong symbol:
     wrongGuess() {
         if (this.symbolClicked < 2) {
             this.currentTime += 5;
