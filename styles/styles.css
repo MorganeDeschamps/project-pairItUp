@@ -5,15 +5,37 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    max-height: 100%;
     height: 100%;
 }
 
+header {
+    margin-top: 5px;
+    justify-self: center;
+    align-self: center;
+    height: 100px;
+}
+
+header img {
+    height: 100%;
+    width: auto;
+}
+
+footer {
+    padding: 30px;
+    justify-self: center;
+    align-self: center;
+}
+
+
+
 /* CONTROLS */
 #controls {
+    color: #D9306F;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 
@@ -63,7 +85,7 @@ body {
     height: 30%;
 }
 
-img {
+li img {
     width: 100%;
     height: 100%;
 }
@@ -71,13 +93,6 @@ img {
 
 .hide {
     display: none;
-}
-
-
-footer {
-    margin-top: auto;
-    justify-self: center;
-    align-self: center;
 }
 
 .play-button {
@@ -90,112 +105,3 @@ footer {
     transform: translateY(4px);
 }
 
-
-/*
-body {
-    background-color: white;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 2%;
-}
-
-#controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#cards {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-flow: row-reverse;
-    align-items: center;
-    justify-content: space-around;
-}
-
-#main-card {
-    display: flex;
-    aspect-ratio: 1/1;
-    max-block-size: 400px;
-    min-block-size: 350px;
-}
-
-#player-card {
-    display: flex;
-    aspect-ratio: 1/1;
-    max-block-size: 400px;
-    min-block-size: 350px;
-}
-
-.symbol {
-    display: flexbox;
-    height: 30%;
-    width: 30%;
-} 
-
-.list-parent {
-    margin: 20px;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    box-shadow: inset 0px 0px 20px -6px pink;
-    border-radius: 50px;
-}
-
-.play-button {
-    display: flexbox;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    cursor:pointer;
-    height: 100%;
-    width: auto;
-}
-
-.player-card.play-button:active {
-    transform: translateY(4px);
-}
-
-
- .card li {
-    height: 30%;
-} 
- 
-img {
-    display: flexbox;
-    margin-left: 0;
-    padding-left: 0;
-    height: 100%;
-    width: 100%;
-}
-
-.hide {
-    display: none;
-}
-
-/* .player-card.move {
-    
-} 
-#cards
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-
-<li class="symbol ${symbol.name}">
-    <button class="play-button">
-        <div><img name="${symbol.name}" class="img${index}" src="./img/${symbol.img}" alt="${symbol.name}"></div>
-    </button>
-</li>
-
-
-
-
-
-*/
