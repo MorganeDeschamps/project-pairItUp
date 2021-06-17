@@ -3,6 +3,7 @@ class Game {
   constructor() {
     this.cards = new Cards();
     this.pairItUp = new PairItUp();
+    this.nodeList  = document.querySelectorAll("img");
   }
 
   start() {
@@ -10,6 +11,7 @@ class Game {
     this.cards.resetCards(2);
     this.cards.buildCardAll("player");
     this.cards.buildCardAll("future");
+    this.findCommon();
   }
 
   playHand(event) {
@@ -56,6 +58,21 @@ class Game {
     this.cards.playerCard = this.cards.futureCard;
     this.cards.playerCardElement.innerHTML = this.cards.futureCardElement.innerHTML;
   }
+
+  findCommon () {
+    let nodeArray = [];
+    for(eachEl of this.nodeList) {nodeArray.push(eachEl.name)} 
+    console.log(nodeArray);
+    /* let filteredArray = nodeArray.filter((el, index) => nodeArray.indexOf(el) !== index)
+    return filteredArray; */
+  }
+
+  alert (common) {
+    if (common.length > 1) {
+    console.log(`There are more than one symbol in common! Check ${common}`)
+    } else {console.log("All good, only one in common!")}
+  }
+
 
   endGame() {
     this.cards.resetCards(3);

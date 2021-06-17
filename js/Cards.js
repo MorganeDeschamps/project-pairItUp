@@ -83,7 +83,7 @@ class Cards {
         this.mainCard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         this.playerCard = [1, 2, 3, 4, 5, 6, 7, 8];
         this.futureCard = [1, 2, 3, 4, 5, 6, 7, 8];
-        
+
         this.mainCardElement = document.getElementById("main-card");
         this.playerCardElement = document.getElementById("player-card");
         this.futureCardElement = document.getElementById("future-card");
@@ -130,7 +130,7 @@ class Cards {
             cardInner +=
                 `<li class="symbol ${symbol.name}">
                 <button class="play-button">
-                <img class="img${index}" src="./img/${symbol.img}" alt="${symbol.name}" name="${symbol.   name}" width="100" height="100">
+                <img name="${symbol.name}" class="img${index}" src="./img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
                 </button>
                 </li>`;
         })

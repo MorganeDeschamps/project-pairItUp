@@ -4,6 +4,7 @@ body {
     background-color: white;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 
@@ -25,9 +26,9 @@ body {
 
 .cards {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 #main-card {
