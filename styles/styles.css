@@ -25,13 +25,14 @@ body {
 }
 
 .list-parent {
+    aspect-ratio: 1/1;
     list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 1%;
     margin: 10px;
     box-shadow: inset 0px 0px 20px -6px pink;
     border-radius: 50px;
@@ -39,23 +40,25 @@ body {
 }
 
 #main-card {
-    height: 350px;
-    width: 400px;
+    height: 400px;
+    width: 450px;
+    min-height: 350px;
+    min-width: 400px;
 }
 
 #main-card li{
-    padding: 5px;
     width: 30%;
     height: 30%;
 }
 
 #player-card {
-    height: 400px;
-    width: 450px;
+    height: 450px;
+    width: 500px;
+    min-height: 400px;
+    min-width: 450px;
 }
 
 #player-card li {
-    padding: 5px;
     width: 30%;
     height: 30%;
 }

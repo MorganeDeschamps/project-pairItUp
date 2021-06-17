@@ -39,10 +39,12 @@ class Game {
         break;
       case "win":
         this.pairItUp.bestTimeUpdate();
+        this.winOrLose("win");
         this.endGame();
         console.log("YOU WIN")
         break;
       case "lose":
+        this.winOrLose("lose");
         this.endGame();
         console.log("LOSER")
         break
@@ -71,6 +73,17 @@ class Game {
     if (common.length > 1) {
     console.log(`There are more than one symbol in common! Check ${common}`)
     } else {console.log("All good, only one in common!")}
+  }
+
+  winOrLose(result) {
+    switch(result) {
+      case "win":
+      alert('You Won!');
+      break;
+      case "lose":
+      alert('You Lost!');
+      break;
+    } 
   }
 
 

@@ -83,10 +83,18 @@ class PairItUp {
 
 
     bestTimeUpdate() {
-        if (this.currentTime < this.bestTimeSeconds) {
-            this.bestTimeElement.innerText = this.currentTime;
+        if (this.currentTime < this.bestTimeSeconds || this.bestTimeSeconds === 0) {
+            this.bestTimeSeconds = this.currentTime;
+
+            let min = Math.floor(this.bestTimeSeconds / 60);
+            let sec = this.bestTimeSeconds % 60;
+
+            let minutes = this.computeTwoDigitNumber(min);
+            let seconds = this.computeTwoDigitNumber(sec);
+
+            this.bestTime = (minutes + ":" + seconds);
+            this.bestTimeElement.innerText = this.bestTime;
         }
-        this.currentTime = 0;
     }
 
 
