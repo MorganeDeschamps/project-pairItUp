@@ -6,12 +6,8 @@ class PairItUp {
         this.intervalId = null;
         this.currentTime = 0;
         this.bestTimeSeconds = 0;
-        this.bestTime = "";
 
-        this.minDecElement = document.getElementById('minDec');
-        this.minUniElement = document.getElementById('minUni');
-        this.secDecElement = document.getElementById('secDec');
-        this.secUniElement = document.getElementById('secUni');
+        this.timeElement = document.getElementById("time")
         this.bestTimeElement = document.getElementById("best-time");
         this.cardsLeftElement = document.getElementById("cards-left");
     }
@@ -22,7 +18,7 @@ class PairItUp {
         if (this.intervalId) clearInterval(this.intervalId)
         this.intervalId = setInterval(() => {
             this.currentTime += 1;
-            this.printTime(this.getTime());
+            this.printTime(this.getTime(), this.timeElement);
         }, 1000)
     }
 
@@ -57,10 +53,9 @@ class PairItUp {
         let minutes = this.computeTwoDigitNumber(min);
         let seconds = this.computeTwoDigitNumber(sec);
 
-        let string = (minutes + seconds);
-        let time = string.split("");
+        let string = (" " + minutes + " : " + seconds + " ");
 
-        return time;
+        return string;
     }
 
     computeTwoDigitNumber(value) {
@@ -74,26 +69,14 @@ class PairItUp {
         return twoDigits
     }
 
-    printTime(time) {
-        this.minDecElement.innerText = time[0];
-        this.minUniElement.innerText = time[1];
-        this.secDecElement.innerText = time[2];
-        this.secUniElement.innerText = time[3];
+    printTime(time, element) {
+        element.innerText = time;
     }
-
 
     bestTimeUpdate() {
         if (this.currentTime < this.bestTimeSeconds || this.bestTimeSeconds === 0) {
             this.bestTimeSeconds = this.currentTime;
-
-            let min = Math.floor(this.bestTimeSeconds / 60);
-            let sec = this.bestTimeSeconds % 60;
-
-            let minutes = this.computeTwoDigitNumber(min);
-            let seconds = this.computeTwoDigitNumber(sec);
-
-            this.bestTime = (minutes + ":" + seconds);
-            this.bestTimeElement.innerText = this.bestTime;
+            this.printTime(this.getTime(), this.bestTimeElement);
         }
     }
 

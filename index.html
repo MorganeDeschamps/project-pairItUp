@@ -10,14 +10,11 @@
 </head>
 <body>
     <header><img src="./img/title.png" alt=""></header>
+    <div id = "full-page">
     <div id="controls">
         <div>
         <h1>Timer</h1>
-            <span id="minDec" class="number">0</span>
-            <span id="minUni" class="number">0</span>
-            <span>:</span>
-            <span id="secDec" class="number">0</span>
-            <span id="secUni" class="number">0</span>
+        <h2 id="time"> 00 : 00 </h2>
         </div>
         <div class="rounds">
             <h1>Cards left: <span id="cards-left"></span></h1>
@@ -25,7 +22,7 @@
         <div>
             <div>
                 <h1>Best time</h1>
-                <span id="best-time"></span>
+                <h2 id="best-time"> 00 : 00 </h2>
             </div>
         </div>
     </div>
@@ -38,6 +35,7 @@
             <ul id="future-card" class="card future">
             </ul>
         </div>
+    </div>
     </div>
     <footer>
     <button id="start"> NEW GAME </button>

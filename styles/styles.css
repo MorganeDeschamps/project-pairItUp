@@ -9,6 +9,13 @@ body {
     height: 100%;
 }
 
+#full-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
 header {
     margin-top: 5px;
     justify-self: center;
@@ -22,7 +29,6 @@ header img {
 }
 
 footer {
-    padding: 30px;
     justify-self: center;
     align-self: center;
 }
@@ -33,9 +39,13 @@ footer {
 #controls {
     color: #D9306F;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    margin: 5px;
+    position: relative;
+    left: 2px;
+    max-width: 200px;
 }
 
 
@@ -44,6 +54,7 @@ footer {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 5px;
 }
 
 .list-parent {
@@ -57,7 +68,7 @@ footer {
     padding: 1%;
     margin: 10px;
     box-shadow: inset 0px 0px 20px -6px pink;
-    border-radius: 50px;
+    border-radius: 9%;
     list-style-image: initial;
 }
 
@@ -103,5 +114,19 @@ li img {
 
 .play-button:active {
     transform: translateY(4px);
+}
+
+#start {
+    height: 45px;
+    margin: 10px;
+    width: 130px;
+    color: #D9306F;
+    font-weight: bolder;
+    border-color: #D9306F;
+    background-color:white;
+    background-image: url("./img/newgamebtn.png");
+    box-shadow: 8px 8px 0 rgba(251,59,73,.2);
+    border-radius: 5%;
+    cursor: pointer;
 }
 
