@@ -130,7 +130,7 @@ class Cards {
             cardInner +=
                 `<li class="symbol ${symbol.name}">
                 <button class="play-button">
-                <img name="${symbol.name}" class="img${index}" src="./img/${symbol.img}" alt="${symbol.name}" width="100" height="100">
+                <img name="${symbol.name}" class="img${index}" src="./img/${symbol.img}" alt="${symbol.name}">
                 </button>
                 </li>`;
         })

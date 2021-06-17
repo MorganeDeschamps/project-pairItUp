@@ -1,79 +1,68 @@
 body {
-    padding: none;
-    margin: none;
+    padding: auto;
+    margin: auto;
     background-color: white;
     display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    height: 100%;
+}
+
+/* CONTROLS */
+#controls {
+    display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
 }
 
 
-.play-button {
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    cursor:pointer;
-}
-
-.player-card.play-button:active {
-    transform: translateY(4px);
-}
-
-#controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cards {
+#cards {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-evenly;
 }
 
-#main-card {
+.list-parent {
     list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 300px;
-    width: 400px;
     padding: 20px;
+    margin: 10px;
     box-shadow: inset 0px 0px 20px -6px pink;
     border-radius: 50px;
     list-style-image: initial;
 }
 
+#main-card {
+    height: 350px;
+    width: 400px;
+}
+
 #main-card li{
-    height: 100px;
-    width: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: white;
+    padding: 5px;
+    width: 30%;
+    height: 30%;
 }
 
 #player-card {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    height: 300px;
-    width: 400px;
-    padding: 20px;
-    box-shadow: inset 0px 0px 20px -6px pink;
-    border-radius: 50px;
+    height: 400px;
+    width: 450px;
 }
 
 #player-card li {
-    height: 100px;
-    width: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: white;
+    padding: 5px;
+    width: 30%;
+    height: 30%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -82,29 +71,128 @@ body {
 }
 
 
-#future-card {
+footer {
+    margin-top: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+.play-button {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor:pointer;
+}
+
+.play-button:active {
+    transform: translateY(4px);
+}
+
+
+/*
+body {
+    background-color: white;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2%;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cards {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#main-card {
+    display: flex;
+    aspect-ratio: 1/1;
+    max-block-size: 400px;
+    min-block-size: 350px;
+}
+
+#player-card {
+    display: flex;
+    aspect-ratio: 1/1;
+    max-block-size: 400px;
+    min-block-size: 350px;
+}
+
+.symbol {
+    display: flexbox;
+    height: 30%;
+    width: 30%;
+} 
+
+.list-parent {
+    margin: 20px;
+    padding: 0;
     list-style: none;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
-    height: 300px;
-    width: 400px;
-    padding: 20px;
     box-shadow: inset 0px 0px 20px -6px pink;
     border-radius: 50px;
 }
 
-#future-card li {
-    height: 100px;
-    width: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: white;
+.play-button {
+    display: flexbox;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor:pointer;
+    height: 100%;
+    width: auto;
 }
 
-footer {
-    display: flex;
-    justify-self: end;
+.player-card.play-button:active {
+    transform: translateY(4px);
 }
+
+
+ .card li {
+    height: 30%;
+} 
+ 
+img {
+    display: flexbox;
+    margin-left: 0;
+    padding-left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+/* .player-card.move {
+    
+} 
+#cards
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+<li class="symbol ${symbol.name}">
+    <button class="play-button">
+        <div><img name="${symbol.name}" class="img${index}" src="./img/${symbol.img}" alt="${symbol.name}"></div>
+    </button>
+</li>
+
+
+
+
+
+*/
