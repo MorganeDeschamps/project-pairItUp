@@ -113,7 +113,6 @@ class PairItUp {
 
     didYouWin() {
         if (this.cardsLeft === 0) {
-            console.log("ffs");
             return "win"
         } else {
             return "correct"
