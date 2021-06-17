@@ -117,16 +117,21 @@ li img {
 }
 
 #start {
-    height: 45px;
+    height: 60px;
     margin: 10px;
-    width: 130px;
+    width: 190px;
     color: #D9306F;
     font-weight: bolder;
     border-color: #D9306F;
     background-color:white;
-    background-image: url("./img/newgamebtn.png");
     box-shadow: 8px 8px 0 rgba(251,59,73,.2);
     border-radius: 5%;
     cursor: pointer;
+    transform: translateY(5px);
+}
+
+#start img {
+    width: 100%;
+    height: auto;
 }
 
