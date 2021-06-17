@@ -3,7 +3,7 @@ class Game {
   constructor() {
     this.cards = new Cards();
     this.pairItUp = new PairItUp();
-    this.nodeList  = document.querySelectorAll("img");
+    this.interval = null;
   }
 
   start() {
@@ -11,7 +11,7 @@ class Game {
     this.cards.resetCards(2);
     this.cards.buildCardAll("player");
     this.cards.buildCardAll("future");
-    this.findCommon();
+    this.alert(this.findCommon());
   }
 
   playHand(event) {
@@ -29,6 +29,7 @@ class Game {
   nextRound(result) {
     switch (result) {
       case "correct":
+        this.cardFade();
         this.pairItUp.symbolClicked = 0;
         this.moveUp();
         this.cards.resetCards(1);
@@ -61,18 +62,10 @@ class Game {
     this.cards.playerCardElement.innerHTML = this.cards.futureCardElement.innerHTML;
   }
 
-  findCommon () {
-    let nodeArray = [];
-    for(eachEl of this.nodeList) {nodeArray.push(eachEl.name)} 
-    console.log(nodeArray);
-    /* let filteredArray = nodeArray.filter((el, index) => nodeArray.indexOf(el) !== index)
-    return filteredArray; */
-  }
-
-  alert (common) {
-    if (common.length > 1) {
-    console.log(`There are more than one symbol in common! Check ${common}`)
-    } else {console.log("All good, only one in common!")}
+  cardFade() {
+    let cardPlayed = document.getElementById("player-card");
+    cardPlayed.classList.toggle('move');
+    setTimeout(() => {cardPlayed.classList.toggle('move')}, 500);
   }
 
   winOrLose(result) {
@@ -91,6 +84,22 @@ class Game {
     this.cards.resetCards(3);
     this.cards.buildCardAll("main");
     this.pairItUp.stop();
+  }
+
+
+   
+  findCommon () {
+    let nodeList = document.querySelectorAll("#cards img");
+    let nodeArray = [];
+    nodeList.forEach(eachEl => {nodeArray.push(eachEl.name)}); 
+    let filteredArray = nodeArray.filter((el, index) => nodeArray.indexOf(el) !== index)
+    return filteredArray; 
+  }
+
+  alert (common) {
+    if (common.length > 1) {
+    console.log(`There are more than one symbol in common! Check ${common}`)
+    } else {console.log("All good, only one in common!")}
   }
 
 }

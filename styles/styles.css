@@ -110,8 +110,11 @@ li img {
     height: 100%;
 }
 
+div.hide {
+    display: none;
+}
 
-.hide {
+.hidden {
     display: none;
 }
 
@@ -140,5 +143,24 @@ li img {
 #start img {
     width: 100%;
     height: auto;
+}
+
+
+
+/* ANIMATING STUFF */
+.move {
+    animation-name: nextCard;
+    animation-duration: 200ms;
+}
+
+@keyframes nextCard {
+    from {
+        opacity: 100%; 
+        transform: translateX(0px) scale(100%);
+    }
+    to {
+        opacity: 0%; 
+        transform: translateX(400px) scale(70%);
+    }
 }
 
