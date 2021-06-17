@@ -37,17 +37,19 @@ footer {
 
 /* CONTROLS */
 #controls {
-    color: #D9306F;
+    color: rgba(217,48,111,.7);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin: 5px;
+    margin: 2px;
     position: relative;
     left: 2px;
     max-width: 200px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: small;
 }
-
 
 #cards {
     display: flex;
@@ -121,13 +123,11 @@ li img {
     margin: 10px;
     width: 190px;
     color: #D9306F;
-    font-weight: bolder;
     border-color: #D9306F;
     background-color:white;
-    box-shadow: 8px 8px 0 rgba(251,59,73,.2);
-    border-radius: 5%;
+    box-shadow: 8px 8px 0 rgba(217,48,111,.2);
+    border-radius: 2%;
     cursor: pointer;
-    transform: translateY(5px);
 }
 
 #start img {
