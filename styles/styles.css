@@ -150,7 +150,7 @@ div.hide {
 /* ANIMATING STUFF */
 .move {
     animation-name: nextCard;
-    animation-duration: 200ms;
+    animation-duration: 240ms;
 }
 
 @keyframes nextCard {

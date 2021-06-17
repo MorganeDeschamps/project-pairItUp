@@ -7,6 +7,7 @@ class Game {
   }
 
   start() {
+    console.log(this.cards.array.length)
     this.pairItUp.start();
     this.cards.resetCards(2);
     this.cards.buildCardAll("player");
