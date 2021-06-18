@@ -14,6 +14,7 @@ class PairItUp {
     }
 
     start() {
+        this.symbolClicked = 0;
         this.currentTime = 0;
         this.howManyCardsLeft("start");
         if (this.intervalId) clearInterval(this.intervalId)
