@@ -90,7 +90,7 @@ footer {
 }
 
 #main-card.greyed {
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 #main-card li{
@@ -111,8 +111,24 @@ footer {
     background-repeat: no-repeat;
     background-size: 450px, 450px;
     background-position: center;
+    pointer-events: none;
 }
 
+#player-card.win {
+    background-image: url("https://media.giphy.com/media/gd0Dqg6rYhttBVCZqd/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    pointer-events: none;
+}
+
+#player-card.lose {
+    background-image: url("https://media.giphy.com/media/ANJ12GvgwyIeY/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    pointer-events: none;
+}
 
 #player-card li {
     width: 30%;
@@ -159,23 +175,22 @@ div.hide {
     height: auto;
 }
 
-
+#instructions {
+    height: 40px;
+    margin: 10px;
+    width: 40px;
+    color: rgba(217,48,111,.8);
+    border-color: rgba(217,48,111,.5);
+    background-color:white;
+    box-shadow: 4px 4px 0 rgba(217,48,111,.2);
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: medium;
+}
 
 /* ANIMATING STUFF */
-
-.win {
-    background-image: url("https://media.giphy.com/media/gd0Dqg6rYhttBVCZqd/giphy.gif");
-    background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: center;
-}
-
-.lose {
-    background-image: url("https://media.giphy.com/media/ANJ12GvgwyIeY/giphy.gif");
-    background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: center;
-}
 
 .move {
     animation-name: nextCard;
@@ -190,6 +205,26 @@ div.hide {
     to {
         opacity: 0%; 
         transform: translateX(400px) scale(70%);
+    }
+}
+
+#malus {
+    animation-name: malusFn;
+    animation-duration: 800ms;
+}
+
+@keyframes malusFn {
+    0% {
+        opacity: 100%; 
+        transform: translateY(0px);
+    }
+    65% {
+        opacity: 30%; 
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 0%; 
+        transform: translateY(-50px);
     }
 }
 

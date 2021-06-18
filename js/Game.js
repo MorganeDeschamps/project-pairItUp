@@ -11,7 +11,7 @@ class Game {
 
   start() {
     console.log(this.cards.array.length)
-    this.playerCard.classList.remove("back");
+    this.playerCard.classList = "list-parent player";
     this.mainCardElement.classList.remove("greyed");
     this.pairItUp.start();
     this.cards.resetCards(2);
@@ -77,21 +77,23 @@ class Game {
     this.cards.resetCards(3);
     this.cards.emptyCards();
     this.pairItUp.stop();
-    this.playerCard.classList.add("back");
+    this.cards.buildCardAll("main");
 
     if (result === "win") {
-      this.mainCardElement.classList.add("win");
-      
+      this.playerCard.classList.add("win");
+      alert("Nice one!");
     } else if (result === "lose") {
-      this.mainCardElement.classList.add("lose")
+      this.playerCard.classList.add("lose")
       alert('Sorry, you lost this one... Try again?');
     } else {console.log("no winners here")};
 
-    setTimeout(() => {
-    this.cards.buildCardAll("main");
-    this.mainCardElement.classList = "list-parent greyed"}, 4500)
   }
 
+
+  instructions() {
+    this.endGame();
+    this.playerCard.classList = "list-parent player back";
+}
 
    
   findCommon () {
@@ -109,113 +111,3 @@ class Game {
   }
 
 }
-//something
-/* 
-function clicked(event) {
-  pairItUp.symbolClicked += 1;
-
-  let sym1 = game.cards.mainCard.map(element => element.name);
-
-  let sym2 = event.target.alt;
-
-  let result = pairItUp.checkIfSame(sym1, sym2)
-  console.log(result);
-
-  let finalResult = pairItUp.finalCheck(result);
-  console.log(finalResult);
-
-  nextRound(finalResult);
-}
- */
-
-
-
-/*
-for each build function I had this at first:
-    let card = this.cards.cardArray(this.cards.futureCard, this.cards.PlayerCard);
-    this.cards.futureCard = card;
-
-now replaced with:
-    this.cards.cardArray(this.cards.futureCard, this.cards.PlayerCard);
-
-I think it's better but not 100% certain it will work with future cards
-
-
-
-
-buttons() {
-    //this.symbolButtons.forEach((button) => button.addEventListener("click", this.clicked, false));
-    this.symbolButtons.addEventListener("click", this.clicked, false);
-  }
-
-
-  buttons() {
-    this.symbolButtons.forEach((button) => button.onclick = this.clicked)
-  }
-*/
-
-
-/* function nextRound(result) {
-  if (result === "correct") {
-    pairItUp.symbolClicked = 0;
-    game.moveUp();
-    game.cards.resetCards(1);
-    game.buildFutureCard();
-  } else if (result === "wrong") {
-    console.log("Wrong guess! One more chance...")
-  } else if (result === "win") {
-    pairItUp.bestTimeUpdate();
-    game.endGame();
-    console.log("YOU WIN")
-  } else if (result === "lose") {
-    game.endGame();
-    console.log("LOSER")
-  } else {
-    console.log("what?")
-  }
-} */
-
-
-
-
-
-
-
-
-
-
-/* class Game{
-  constructor(){
-    this.gameIsOn = false
-    this.cards = new Cards()
-    this.palyer = new Player()
-    this.board = new Board()
-    this.topOfDeckCard = [1,2,4,78,9,9] 
-  }
-
-  play(){
-    this.board.dealCards()
-    this.palyer.palyHand()
-    this.board.checkWinner()
-  }
-
-  announceWinner(){
-    // ???
-  }
-
-  generateBoard(){
-    return this.board.getHTML()
-  }
-
-}
-
-
-window.addEventListener("load", () =>{
-  const game = new Game()
-  const board = game.genrateBoard()
-  document.getElementById("game").appendChild(board)
-  document.getElementById("start-butotn").addEventListener("click", ()=> game.gameisOn= true)
-
-  document.getElementById("stop-butotn").addEventListener("click", ()=> game.gameisOn= false)
- 
-}) */

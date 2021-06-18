@@ -10,6 +10,7 @@ class PairItUp {
         this.timeElement = document.getElementById("time")
         this.bestTimeElement = document.getElementById("best-time");
         this.cardsLeftElement = document.getElementById("cards-left");
+        
     }
 
     start() {
@@ -27,6 +28,7 @@ class PairItUp {
         this.howManyCardsLeft("stop");
         clearInterval(this.intervalId)
         this.intervalId = null;
+        this.timeElement.innerHTML = " 00 : 00 ";
     }
 
     howManyCardsLeft(value) {
@@ -114,12 +116,19 @@ class PairItUp {
     wrongGuess() {
         if (this.symbolClicked < 2) {
             this.currentTime += 5;
+            this.malusTime()
             return "wrong";
         } else {
             return "lose"
         }
     }
 
+    malusTime() {
+        let malusElement = document.getElementById("malus");
+        malusElement.classList.toggle('hidden');
+        setTimeout(() => {malusElement.classList.toggle('hidden')}, 500);
+      }
+    
     /* 
     bonusTime() {
         this.currentTime -= 10;

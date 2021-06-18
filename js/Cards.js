@@ -159,7 +159,6 @@ class Cards {
         this.mainCardElement.innerHTML = "";
     }
 
-
     resetCards(number) {
         switch (number) {
             case 3:
