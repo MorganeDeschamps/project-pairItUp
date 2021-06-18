@@ -82,10 +82,15 @@ footer {
 }
 
 #main-card {
-    height: 400px;
-    width: 450px;
+    height: 390px;
+    width: 440px;
     min-height: 350px;
     min-width: 400px;
+    pointer-events: none;
+}
+
+#main-card.greyed {
+    opacity: 0.6;
 }
 
 #main-card li{
@@ -157,6 +162,21 @@ div.hide {
 
 
 /* ANIMATING STUFF */
+
+.win {
+    background-image: url("https://media.giphy.com/media/gd0Dqg6rYhttBVCZqd/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+}
+
+.lose {
+    background-image: url("https://media.giphy.com/media/ANJ12GvgwyIeY/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+}
+
 .move {
     animation-name: nextCard;
     animation-duration: 240ms;

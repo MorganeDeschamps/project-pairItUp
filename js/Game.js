@@ -4,12 +4,15 @@ class Game {
     this.cards = new Cards();
     this.pairItUp = new PairItUp();
     this.interval = null;
-    this.cardBack = document.querySelector("#player-card");
+    this.playerCard = document.querySelector("#player-card");
+    this.mainCardElement = document.getElementById("main-card");
+
   }
 
   start() {
     console.log(this.cards.array.length)
-    this.cardBack.classList.remove("back");
+    this.playerCard.classList.remove("back");
+    this.mainCardElement.classList.remove("greyed");
     this.pairItUp.start();
     this.cards.resetCards(2);
     this.cards.buildCardAll("player");
@@ -43,13 +46,11 @@ class Game {
         break;
       case "win":
         this.pairItUp.bestTimeUpdate();
-        this.winOrLose("win");
-        this.endGame();
+        this.endGame("win");
         console.log("YOU WIN")
         break;
       case "lose":
-        this.winOrLose("lose");
-        this.endGame();
+        this.endGame("lose");
         console.log("LOSER")
         break
       default:
@@ -71,24 +72,24 @@ class Game {
     setTimeout(() => {cardPlayed.classList.toggle('move')}, 500);
   }
 
-  winOrLose(result) {
-    switch(result) {
-      case "win":
-      alert('You Won!');
-      break;
-      case "lose":
-      alert('You Lost!');
-      break;
-    } 
-  }
 
-
-  endGame() {
+  endGame(result) {
     this.cards.resetCards(3);
-    this.cards.emptyPlayerCard();
-    this.cards.buildCardAll("main");
+    this.cards.emptyCards();
     this.pairItUp.stop();
-    this.cardBack.classList.add("back");
+    this.playerCard.classList.add("back");
+
+    if (result === "win") {
+      this.mainCardElement.classList.add("win");
+      
+    } else if (result === "lose") {
+      this.mainCardElement.classList.add("lose")
+      alert('Sorry, you lost this one... Try again?');
+    } else {console.log("no winners here")};
+
+    setTimeout(() => {
+    this.cards.buildCardAll("main");
+    this.mainCardElement.classList = "list-parent greyed"}, 4500)
   }
 
 

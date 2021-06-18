@@ -154,8 +154,9 @@ class Cards {
         }
     }
 
-    emptyPlayerCard() {
+    emptyCards() {
         this.playerCardElement.innerHTML = "";
+        this.mainCardElement.innerHTML = "";
     }
 
 
