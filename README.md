@@ -135,4 +135,22 @@ Clicking on the wrong symbol will add 5sec to your timer. Two wrong clicks in th
     - buttons on player card: calls back playHand() in Game class, triggers the result check etc..
 
 
+<br>
 
+
+## Links
+
+
+### Git
+
+URls for the project repo and deploy
+
+[Link Repo](https://github.com/MorganeDeschamps/project-pairItUp)
+
+[Link Deploy](https://morganedeschamps.github.io/project-pairItUp/)
+
+### Slides
+
+URls for the project presentation (slides)
+
+[Link Slides.com](https://docs.google.com/presentation/d/1rC3kNVWA2mknLAQACT4ZkscGv5Ovz1HFa_nO22Dov-4/edit?usp=sharing)
