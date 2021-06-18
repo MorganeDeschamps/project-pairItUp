@@ -1,7 +1,7 @@
 class PairItUp {
     constructor() {
         this.symbolClicked = 0;
-        this.cardsLeft = null;
+        this.cardsLeft = "---";
 
         this.intervalId = null;
         this.currentTime = 0;
@@ -32,13 +32,13 @@ class PairItUp {
     howManyCardsLeft(value) {
         switch (value) {
             case "start": 
-                this.cardsLeft = 5;
+                this.cardsLeft = 10;
                 break;
             case "update":
                 this.cardsLeft -=1;
                 break;
             case "stop":
-                this.cardsLeft = null;
+                this.cardsLeft = "---";
                 break;
         }
 
@@ -77,6 +77,7 @@ class PairItUp {
         if (this.currentTime < this.bestTimeSeconds || this.bestTimeSeconds === 0) {
             this.bestTimeSeconds = this.currentTime;
             this.printTime(this.getTime(), this.bestTimeElement);
+            localStorage.setItem('bestScore', this.getTime());
         }
     }
 

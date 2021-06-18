@@ -1,6 +1,9 @@
 window.addEventListener('load', (event) => {
   const game = new Game();
 
+  const bestTime = localStorage.getItem('bestScore');
+  game.pairItUp.printTime(bestTime, game.pairItUp.bestTimeElement);
+  
   game.cards.buildCardAll("main");
 
   const startButton = document.getElementById("start");

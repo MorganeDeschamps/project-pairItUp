@@ -154,6 +154,11 @@ class Cards {
         }
     }
 
+    emptyPlayerCard() {
+        this.playerCardElement.innerHTML = "";
+    }
+
+
     resetCards(number) {
         switch (number) {
             case 3:

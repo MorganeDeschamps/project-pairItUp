@@ -4,10 +4,12 @@ class Game {
     this.cards = new Cards();
     this.pairItUp = new PairItUp();
     this.interval = null;
+    this.cardBack = document.querySelector("#player-card");
   }
 
   start() {
     console.log(this.cards.array.length)
+    this.cardBack.classList.remove("back");
     this.pairItUp.start();
     this.cards.resetCards(2);
     this.cards.buildCardAll("player");
@@ -83,8 +85,10 @@ class Game {
 
   endGame() {
     this.cards.resetCards(3);
+    this.cards.emptyPlayerCard();
     this.cards.buildCardAll("main");
     this.pairItUp.stop();
+    this.cardBack.classList.add("back");
   }
 
 

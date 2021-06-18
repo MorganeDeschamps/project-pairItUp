@@ -75,7 +75,7 @@ footer {
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 1%;
-    margin: 10px;
+    margin: 10px 25px;
     box-shadow: 0px 0px 20px -6px rgba(217,48,111,.7);
     border-radius: 9%;
     list-style-image: initial;
@@ -98,7 +98,16 @@ footer {
     width: 500px;
     min-height: 400px;
     min-width: 450px;
+    background-image: none;
 }
+
+#player-card.back {
+    background-image: url("../backgroundImages/rulesfull1.png");
+    background-repeat: no-repeat;
+    background-size: 450px, 450px;
+    background-position: center;
+}
+
 
 #player-card li {
     width: 30%;
