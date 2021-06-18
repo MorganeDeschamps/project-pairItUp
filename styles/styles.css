@@ -58,6 +58,21 @@ footer {
     justify-content: space-around;
 }
 
+#instructions {
+    height: 40px;
+    margin: 10px;
+    width: 40px;
+    color: rgba(217,48,111,.8);
+    border-color: rgba(217,48,111,.5);
+    background-color:white;
+    box-shadow: 4px 4px 0 rgba(217,48,111,.2);
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: medium;
+}
+
 #cards {
     display: flex;
     flex-direction: row-reverse;
@@ -175,20 +190,6 @@ div.hide {
     height: auto;
 }
 
-#instructions {
-    height: 40px;
-    margin: 10px;
-    width: 40px;
-    color: rgba(217,48,111,.8);
-    border-color: rgba(217,48,111,.5);
-    background-color:white;
-    box-shadow: 4px 4px 0 rgba(217,48,111,.2);
-    border-radius: 50%;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size: medium;
-}
 
 /* ANIMATING STUFF */
 
